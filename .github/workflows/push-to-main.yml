@@ -17,6 +17,4 @@ jobs:
         run: mvn --batch-mode --update-snapshots verify
       - name: coverage
         run:
-          curl -Os https://uploader.codecov.io/latest/linux/codecov
-          chmod +x codecov
-          ./codecov
+          curl -Os https://uploader.codecov.io/latest/linux/codecov && chmod +x codecov && ./codecov
