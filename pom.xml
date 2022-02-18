@@ -14,6 +14,7 @@
         <module>launcher</module>
         <module>coverage</module>
         <module>schema</module>
+        <module>domain</module>
     </modules>
 
     <properties>
@@ -44,6 +45,7 @@
         <launcher.version>1.0-SNAPSHOT</launcher.version>
         <coverage.version>1.0-SNAPSHOT</coverage.version>
         <schema.version>1.0-SNAPSHOT</schema.version>
+        <domain.version>1.0-SNAPSHOT</domain.version>
     </properties>
 
     <build>
