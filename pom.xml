@@ -15,6 +15,8 @@
         <module>coverage</module>
         <module>schema</module>
         <module>domain</module>
+        <module>betting-client</module>
+        <module>auth-client</module>
     </modules>
 
     <properties>
@@ -23,14 +25,17 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
+        <child.packaging>jar</child.packaging>
 
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
         <springboot.version>2.6.3</springboot.version>
+        <spring-shell.version>2.0.1.RELEASE</spring-shell.version>
         <spring-boot-maven-plugin.version>2.5.3</spring-boot-maven-plugin.version>
         <lombok.version>1.18.22</lombok.version>
         <slf4j.version>1.7.35</slf4j.version>
         <log4j.version>2.17.1</log4j.version>
         <swagger-annotations.version>1.6.2</swagger-annotations.version>
+        <swagger-codegen-maven-plugin.version>2.1.5</swagger-codegen-maven-plugin.version>
         <lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
         <javax.annotation.version>1.1.0.v201108011116</javax.annotation.version>
         <jaxb-api.version>2.2.12</jaxb-api.version>
@@ -42,10 +47,16 @@
         <wiremock.version>2.27.2</wiremock.version>
         <jacoco.version>0.8.7</jacoco.version>
 
-        <launcher.version>1.0-SNAPSHOT</launcher.version>
-        <coverage.version>1.0-SNAPSHOT</coverage.version>
-        <schema.version>1.0-SNAPSHOT</schema.version>
-        <domain.version>1.0-SNAPSHOT</domain.version>
+        <jacoco.target>0.9</jacoco.target>
+        <jacoco.haltOnFailure>true</jacoco.haltOnFailure>
+        <jacoco.phase>test</jacoco.phase>
+
+        <launcher.artifactId>launcher</launcher.artifactId>
+        <coverage.artifactId>coverage</coverage.artifactId>
+        <schema.artifactId>schema</schema.artifactId>
+        <domain.artifactId>domain</domain.artifactId>
+        <betting-client.artifactId>betting-client</betting-client.artifactId>
+        <auth-client.artifactId>auth-client</auth-client.artifactId>
     </properties>
 
     <build>
@@ -72,6 +83,17 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-web</artifactId>
                 <version>${springboot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter</artifactId>
+                <version>${springboot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.shell</groupId>
+                <artifactId>spring-shell-starter</artifactId>
+                <version>${spring-shell.version}</version>
+                <!--                <version>${springboot.version}</version>-->
             </dependency>
 
             <!-- Util -->
@@ -171,7 +193,12 @@
                 <version>${wiremock.version}</version>
                 <scope>test</scope>
             </dependency>
+            <dependency>
+                <groupId>com.github.tomakehurst</groupId>
+                <artifactId>wiremock-jre8</artifactId>
+                <version>${wiremock.version}</version>
+                <scope>test</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
-
 </project>

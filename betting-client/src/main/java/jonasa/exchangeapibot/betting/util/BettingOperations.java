@@ -1,11 +1,6 @@
-package jonasa.exchangeapibot.betting;
+package jonasa.exchangeapibot.betting.util;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-
-@Getter
-@RequiredArgsConstructor
-public enum Operations {
+public enum BettingOperations {
     LIST_EVENT_TYPES("listEventTypes"),
     LIST_COMPETITIONS("listCompetitions"),
     LIST_TIME_RANGES("listTimeRanges"),
@@ -24,5 +19,18 @@ public enum Operations {
     REPLACE_ORDERS("replaceOrders"),
     UPDATE_ORDERS("updateOrders");
 
+    private static final String PATH_DELIMITER = "/";
     private final String value;
+
+    BettingOperations(String value) {
+        this.value = value;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    public String path() {
+        return PATH_DELIMITER + value;
+    }
 }

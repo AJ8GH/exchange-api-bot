@@ -11,9 +11,8 @@
     </parent>
 
     <artifactId>coverage</artifactId>
-    <packaging>jar</packaging>
+    <packaging>${child.packaging}</packaging>
     <name>${project.artifactId}</name>
-    <version>${coverage.version}</version>
 
     <build>
         <plugins>
@@ -23,9 +22,12 @@
                 <version>${jacoco.version}</version>
                 <configuration>
                     <excludes>
-                        <exclude>**/config/*</exclude>
+                        <exclude>**/config/*</exclude> <!-- config classes -->
+                        <exclude>**/*Operations*</exclude> <!-- Operations util -->
+                        <exclude>**/Headers.java</exclude> <!-- Headers util -->
+                        <exclude>**/com/betfair/**/*</exclude> <!-- generated classes -->
                     </excludes>
-                    <haltOnFailure>true</haltOnFailure>
+                    <haltOnFailure>${jacoco.haltOnFailure}</haltOnFailure>
                     <rules>
                         <rule>
                             <element>BUNDLE</element>
@@ -33,7 +35,7 @@
                                 <limit>
                                     <counter>INSTRUCTION</counter>
                                     <value>COVEREDRATIO</value>
-                                    <minimum>0.9</minimum>
+                                    <minimum>${jacoco.target}</minimum>
                                 </limit>
                             </limits>
                         </rule>
@@ -47,7 +49,7 @@
                     </execution>
                     <execution>
                         <id>report-aggregate</id>
-                        <phase>test</phase>
+                        <phase>${jacoco.phase}</phase>
                         <goals>
                             <goal>report-aggregate</goal>
                         </goals>
@@ -65,9 +67,19 @@
 
     <dependencies>
         <dependency>
-            <groupId>jonasa</groupId>
-            <artifactId>launcher</artifactId>
-            <version>${launcher.version}</version>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>${launcher.artifactId}</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>${betting-client.artifactId}</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>${auth-client.artifactId}</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 </project>
