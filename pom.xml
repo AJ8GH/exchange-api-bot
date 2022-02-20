@@ -11,12 +11,13 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>launcher</module>
-        <module>coverage</module>
-        <module>schema</module>
-        <module>domain</module>
-        <module>betting-client</module>
         <module>auth-client</module>
+        <module>betting-client</module>
+        <module>console</module>
+        <module>coverage</module>
+        <module>domain</module>
+        <module>launcher</module>
+        <module>schema</module>
     </modules>
 
     <properties>
@@ -27,36 +28,37 @@
         <project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
         <child.packaging>jar</child.packaging>
 
-        <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
-        <springboot.version>2.6.3</springboot.version>
-        <spring-shell.version>2.0.1.RELEASE</spring-shell.version>
-        <spring-boot-maven-plugin.version>2.5.3</spring-boot-maven-plugin.version>
-        <lombok.version>1.18.22</lombok.version>
-        <slf4j.version>1.7.35</slf4j.version>
-        <log4j.version>2.17.1</log4j.version>
-        <swagger-annotations.version>1.6.2</swagger-annotations.version>
-        <swagger-codegen-maven-plugin.version>2.1.5</swagger-codegen-maven-plugin.version>
-        <lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
+        <jackson.version>2.13.1</jackson.version>
+        <jacoco.version>0.8.7</jacoco.version>
         <javax.annotation.version>1.1.0.v201108011116</javax.annotation.version>
         <jaxb-api.version>2.2.12</jaxb-api.version>
         <jaxb-impl.version>2.2.11</jaxb-impl.version>
-        <jackson.version>2.13.1</jackson.version>
         <jmxtools.version>1.2.1</jmxtools.version>
         <junit.version>5.8.2</junit.version>
+        <lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
+        <log4j.version>2.17.1</log4j.version>
+        <lombok.version>1.18.22</lombok.version>
+        <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
         <mockito.version>4.1.0</mockito.version>
+        <slf4j.version>1.7.35</slf4j.version>
+        <springboot.version>2.6.3</springboot.version>
+        <spring-boot-maven-plugin.version>2.5.3</spring-boot-maven-plugin.version>
+        <spring-shell.version>2.0.1.RELEASE</spring-shell.version>
+        <swagger-annotations.version>1.6.2</swagger-annotations.version>
+        <swagger-codegen-maven-plugin.version>2.1.5</swagger-codegen-maven-plugin.version>
         <wiremock.version>2.27.2</wiremock.version>
-        <jacoco.version>0.8.7</jacoco.version>
 
-        <jacoco.target>0.9</jacoco.target>
         <jacoco.haltOnFailure>true</jacoco.haltOnFailure>
         <jacoco.phase>test</jacoco.phase>
+        <jacoco.target>0.9</jacoco.target>
 
-        <launcher.artifactId>launcher</launcher.artifactId>
-        <coverage.artifactId>coverage</coverage.artifactId>
-        <schema.artifactId>schema</schema.artifactId>
-        <domain.artifactId>domain</domain.artifactId>
-        <betting-client.artifactId>betting-client</betting-client.artifactId>
         <auth-client.artifactId>auth-client</auth-client.artifactId>
+        <betting-client.artifactId>betting-client</betting-client.artifactId>
+        <console.artifactId>console</console.artifactId>
+        <coverage.artifactId>coverage</coverage.artifactId>
+        <domain.artifactId>domain</domain.artifactId>
+        <launcher.artifactId>launcher</launcher.artifactId>
+        <schema.artifactId>schema</schema.artifactId>
     </properties>
 
     <build>

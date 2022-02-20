@@ -20,9 +20,11 @@ public class AuthClient {
 
     private final RestTemplate restTemplate;
     private final URI baseUri;
-    private final URI authUri;
     private final String username;
     private final String password;
+
+    private URI authUri;
+    private int port;
 
     public AuthClient(RestTemplate restTemplate, URI baseUri,
                       String username, String password) {
@@ -30,7 +32,7 @@ public class AuthClient {
         this.baseUri = baseUri;
         this.username = username;
         this.password = password;
-        this.authUri = buildAuthUri();
+        buildAuthUri();
     }
 
     public Optional<AuthResponse> login() {
@@ -47,9 +49,18 @@ public class AuthClient {
         return Optional.empty();
     }
 
-    private URI buildAuthUri() {
-        return UriComponentsBuilder.fromUri(baseUri)
-                .path(LOGIN.path())
+    public void setPort(int port) {
+        if (port < 0 || port > 65535) {
+            throw new IllegalArgumentException("Port not in allowed range");
+        }
+        this.port = port;
+        buildAuthUri();
+    }
+
+    private void buildAuthUri() {
+        UriComponentsBuilder builder = UriComponentsBuilder.fromUri(baseUri);
+        if (port != 0) builder.port(port);
+        this.authUri = builder.path(LOGIN.path())
                 .queryParam(USERNAME_PARAM, username)
                 .queryParam(PASSWORD_PARAM, password)
                 .build()

@@ -34,19 +34,20 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class AuthClientIntegrationTest {
     private static final String AUTH_URL_STRING = "http://localhost";
+    private static final int PORT = 5555;
 
     private static final String USERNAME = "username";
     private static final String PASSWORD = "password";
     private static final String APP_KEY = "appKey";
     private static final long TIMEOUT = 10;
 
+    private static WireMockServer wireMockServer;
     private AuthClient authClient;
     private ObjectMapper mapper;
-    private static WireMockServer wireMockServer;
 
     @BeforeAll
     static void setUpAll() {
-        wireMockServer = new WireMockServer(80);
+        wireMockServer = new WireMockServer(PORT);
         wireMockServer.start();
     }
 
@@ -63,6 +64,7 @@ class AuthClientIntegrationTest {
                 .build();
 
         authClient = new AuthClient(restTemplate, getTestURI(), USERNAME, PASSWORD);
+        authClient.setPort(PORT);
         mapper = new ObjectMapper();
     }
 

@@ -15,6 +15,7 @@ import java.util.Optional;
 
 import static jonasa.exchangeapibot.auth.util.AuthOperations.LOGIN;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
@@ -56,7 +57,6 @@ class AuthClientMockTest {
         assertEquals(expectedResponse, response.get());
     }
 
-
     @Test
     void login_Fail_ReturnsEmptyOptional() throws URISyntaxException {
         when(restTemplate.postForObject(eq(expectedURI()), any(), eq(AuthResponse.class)))
@@ -75,6 +75,12 @@ class AuthClientMockTest {
 
         verify(restTemplate, times(2)).postForObject(eq(expectedURI()), any(), eq(AuthResponse.class));
         assertTrue(response.isEmpty(), "Expected no response but one was present");
+    }
+
+    @Test
+    void setPort() {
+        assertThrows(IllegalArgumentException.class, () -> authClient.setPort(-1));
+        assertThrows(IllegalArgumentException.class, () -> authClient.setPort(65536));
     }
 
     private URI getTestURI() throws URISyntaxException {
