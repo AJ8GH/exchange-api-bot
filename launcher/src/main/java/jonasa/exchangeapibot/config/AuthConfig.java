@@ -42,19 +42,6 @@ class AuthConfig {
     private int connectTimeout;
 
     @Bean
-    RestTemplate restTemplate() {
-        return new RestTemplateBuilder()
-                .additionalMessageConverters(mappingJackson2HttpMessageConverter())
-                .defaultHeader(CONTENT_TYPE.header(), CONTENT_TYPE.value())
-                .defaultHeader(ACCEPT.header(), ACCEPT.value())
-                .defaultHeader(X_IP.header(), X_IP.value())
-                .defaultHeader(X_APPLICATION.header(), appKey)
-                .setConnectTimeout(Duration.ofSeconds(connectTimeout))
-                .setReadTimeout(Duration.ofSeconds(readTimeout))
-                .build();
-    }
-
-    @Bean
     AuthClient authClient() {
         try {
             URI uri = new URI(baseUri);
@@ -65,14 +52,27 @@ class AuthConfig {
     }
 
     @Bean
-    public MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter() {
-        MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
+    RestTemplate restTemplate() {
+        return new RestTemplateBuilder()
+                .additionalMessageConverters(jacksonConverter())
+                .defaultHeader(CONTENT_TYPE.header(), CONTENT_TYPE.value())
+                .defaultHeader(ACCEPT.header(), ACCEPT.value())
+                .defaultHeader(X_IP.header(), X_IP.value())
+                .defaultHeader(X_APPLICATION.header(), appKey)
+                .setConnectTimeout(Duration.ofSeconds(connectTimeout))
+                .setReadTimeout(Duration.ofSeconds(readTimeout))
+                .build();
+    }
+
+    @Bean
+    MappingJackson2HttpMessageConverter jacksonConverter() {
+        var converter = new MappingJackson2HttpMessageConverter();
         converter.setObjectMapper(objectMapper());
         return converter;
     }
 
     @Bean
-    public ObjectMapper objectMapper() {
+    ObjectMapper objectMapper() {
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT, true);
         return mapper;

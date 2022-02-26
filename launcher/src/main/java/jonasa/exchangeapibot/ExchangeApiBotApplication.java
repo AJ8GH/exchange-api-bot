@@ -1,25 +1,30 @@
 package jonasa.exchangeapibot;
 
-import jonasa.exchangeapibot.auth.client.AuthClient;
-import jonasa.exchangeapibot.auth.types.AuthResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.util.Optional;
+import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
 public class ExchangeApiBotApplication {
     private static final Logger LOG = LoggerFactory.getLogger(ExchangeApiBotApplication.class);
+    private static ConfigurableApplicationContext context;
 
     public static void main(String[] args) {
-        var context = SpringApplication.run(ExchangeApiBotApplication.class, args);
+        start(args);
+    }
 
-        AuthClient client = context.getBean(AuthClient.class);
+    public static void start(String[] args) {
+        LOG.info("*** STARTING BOT ***");
+        new Thread(() -> context = SpringApplication
+                .run(ExchangeApiBotApplication.class, args))
+                .start();
+    }
 
-        LOG.info("*** Authenticating ***");
-        Optional<AuthResponse> response = client.login();
-        LOG.info("*** Received response ***\n{}", response.get());
+    public static void stop() {
+        if (context != null) {
+            SpringApplication.exit(context);
+        }
     }
 }

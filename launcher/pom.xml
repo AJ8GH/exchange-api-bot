@@ -77,14 +77,20 @@
             <artifactId>${domain.artifactId}</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>jonasa</groupId>
+            <artifactId>${console.artifactId}</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
+            <groupId>com.sun.jdmk</groupId>
+            <artifactId>jmxtools</artifactId>
+            <version>${jmxtools.version}</version>
         </dependency>
     </dependencies>
 </project>

@@ -1,15 +1,17 @@
 package jonasa.exchangeapibot;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-@SpringBootTest
+@ExtendWith(SpringExtension.class)
 @ActiveProfiles("test")
 class ExchangeApiBotApplicationTest {
 
     @Test
-    void main_ContextLoads() {
-        ExchangeApiBotApplication.main(new String[] {});
+    void contextLoads() {
+        ExchangeApiBotApplication.main(new String [] {});
+        ExchangeApiBotApplication.stop();
     }
 }

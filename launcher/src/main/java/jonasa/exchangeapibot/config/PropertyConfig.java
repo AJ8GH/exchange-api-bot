@@ -11,9 +11,9 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
         @PropertySource(value = "classpath:conf/api-nxt-secret.properties", ignoreResourceNotFound = true),
 })
 @Configuration
-public class PropertyConfig {
+class PropertyConfig {
     @Bean
-    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
+    static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
         return new PropertySourcesPlaceholderConfigurer();
     }
 }

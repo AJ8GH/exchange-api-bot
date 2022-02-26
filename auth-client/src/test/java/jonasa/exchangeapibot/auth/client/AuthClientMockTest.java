@@ -26,7 +26,6 @@ import static org.mockito.MockitoAnnotations.openMocks;
 
 class AuthClientMockTest {
     private static final String AUTH_URL_STRING = "http://testurl";
-    private static final String APP_KEY = "appKey";
     private static final String USERNAME = "username";
     private static final String PASSWORD = "password";
     @Mock
