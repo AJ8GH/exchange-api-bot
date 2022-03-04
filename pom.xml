@@ -39,13 +39,14 @@
         <lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
         <log4j.version>2.17.1</log4j.version>
         <lombok.version>1.18.22</lombok.version>
+        <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
         <maven-jar-plugin.version>3.2.2</maven-jar-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
         <mockito.version>4.1.0</mockito.version>
         <slf4j.version>1.7.35</slf4j.version>
         <springboot.version>2.6.3</springboot.version>
         <spring-boot-maven-plugin.version>2.5.3</spring-boot-maven-plugin.version>
-        <spring-shell.version>2.1.0-M2</spring-shell.version>
+        <spring-shell.version>2.0.1.RELEASE</spring-shell.version>
         <swagger-annotations.version>1.6.2</swagger-annotations.version>
         <swagger-codegen-maven-plugin.version>2.1.5</swagger-codegen-maven-plugin.version>
         <wiremock.version>2.27.2</wiremock.version>
