@@ -5,22 +5,20 @@ import jonasa.exchangeapibot.auth.types.AuthResponse;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 
+import java.util.Optional;
+
 @ShellComponent
-public class ShellConsole {
+public class AuthConsole {
+    private static final String ERROR_MESSAGE = "Error Authenticating";
     private final AuthClient authClient;
 
-    public ShellConsole(AuthClient authClient) {
+    public AuthConsole(AuthClient authClient) {
         this.authClient = authClient;
     }
 
-    @ShellMethod("Says hello")
-    public String hello() {
-        return "Hello, World!";
-    }
-
-    @ShellMethod("Logs in")
+    @ShellMethod("Authenticates a new session")
     public String login() {
-        AuthResponse response = authClient.login().get();
-        return response.toString();
+        Optional<AuthResponse> response = authClient.login();
+        return response.isPresent() ? response.get().toString() : ERROR_MESSAGE;
     }
 }
