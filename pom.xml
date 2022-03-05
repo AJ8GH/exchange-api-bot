@@ -22,13 +22,9 @@
 
     <repositories>
         <repository>
-            <id>spring-shell</id>
-            <name>spring-shell</name>
-            <url>https://repo.spring.io/ui/native/snapshot/org/springframework/shell/spring-shell-starter/2.1.0-SNAPSHOT/</url>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
-            </snapshots>
+            <id>repository.spring.snapshot</id>
+            <name>Spring Snapshot Repository</name>
+            <url>https://repo.spring.io/ui/native/snapshot</url>
         </repository>
     </repositories>
 
