@@ -22,9 +22,17 @@
 
     <repositories>
         <repository>
-            <id>repository.spring.snapshot</id>
-            <name>Spring Snapshot Repository</name>
-            <url>https://repo.spring.io/ui/native/snapshot</url>
+            <id>central</id>
+            <name>Maven Repository Switchboard</name>
+            <url>https://repo1.maven.org/maven2/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>repository.spring.milestone</id>
+            <name>Spring Milestone Repository</name>
+            <url>https://repo.spring.io/ui/native/milestone</url>
         </repository>
     </repositories>
 
