@@ -20,6 +20,7 @@ public enum AuthErrorCode {
     EMAIL_LOGIN_NOT_ALLOWED("This account has not opted in to log in with the email"),
     FORBIDDEN("Forbidden"),
     INPUT_VALIDATION_ERROR("Input validation error"),
+    INTERNAL_ERROR("Internal error"),
     INTERNATIONAL_TERMS_ACCEPTANCE_REQUIRED("The latest international terms and conditions must be accepted prior to logging in."),
     INVALID_CONNECTIVITY_TO_REGULATOR("The regulator cannot be accessed due to some internal problems in the system behind or in at regulator; timeout cases included."),
     INVALID_CONNECTIVITY_TO_REGULATOR_DK("The DK regulator cannot be accessed due to some internal problems in the system behind or in at regulator; timeout cases included."),

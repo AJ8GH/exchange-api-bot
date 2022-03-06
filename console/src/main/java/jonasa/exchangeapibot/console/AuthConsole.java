@@ -10,6 +10,7 @@ import java.util.Optional;
 @ShellComponent
 public class AuthConsole {
     private static final String ERROR_MESSAGE = "Error Authenticating";
+
     private final AuthClient authClient;
 
     public AuthConsole(AuthClient authClient) {

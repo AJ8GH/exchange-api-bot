@@ -1,7 +1,9 @@
 package jonasa.exchangeapibot.auth.util;
 
 public enum AuthOperations {
-    LOGIN("login");
+    LOGIN("login"),
+    LOGOUT("logout"),
+    KEEP_ALIVE("keepAlive");
 
     private static final String PATH_DELIMITER = "/";
 
@@ -9,10 +11,6 @@ public enum AuthOperations {
 
     AuthOperations(String value) {
         this.value = value;
-    }
-
-    public String value() {
-        return value;
     }
 
     public String path() {
