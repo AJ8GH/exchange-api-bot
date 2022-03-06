@@ -30,9 +30,9 @@
         </dependency>
 
         <dependency>
-            <groupId>jonasa</groupId>
-            <artifactId>auth-client</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>${auth.artifactId}</artifactId>
+            <version>${project.version}</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
