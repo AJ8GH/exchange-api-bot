@@ -1,25 +1,31 @@
 package jonasa.exchangeapibot.console;
 
-import jonasa.exchangeapibot.auth.client.AuthClient;
-import jonasa.exchangeapibot.auth.types.AuthResponse;
+import jonasa.exchangeapibot.auth.session.Session;
+import jonasa.exchangeapibot.auth.session.SessionSupplier;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 
-import java.util.Optional;
-
 @ShellComponent
 public class AuthConsole {
-    private static final String ERROR_MESSAGE = "Error Authenticating";
 
-    private final AuthClient authClient;
+    private final SessionSupplier sessionSupplier;
 
-    public AuthConsole(AuthClient authClient) {
-        this.authClient = authClient;
+    public AuthConsole(SessionSupplier sessionSupplier) {
+        this.sessionSupplier = sessionSupplier;
     }
 
     @ShellMethod("Authenticates a new session")
-    public String login() {
-        Optional<AuthResponse> response = authClient.login();
-        return response.isPresent() ? response.get().toString() : ERROR_MESSAGE;
+    public Session login() {
+        return sessionSupplier.get();
+    }
+
+    @ShellMethod("Sets the max session duration")
+    public void setSessionTtl(long ttl) {
+        sessionSupplier.setSessionTtl(ttl);
+    }
+
+    @ShellMethod("Keeps the current session alive")
+    public void setKeepAlive(long freq) {
+        sessionSupplier.setKeepAliveFreq(freq);
     }
 }

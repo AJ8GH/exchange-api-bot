@@ -6,8 +6,8 @@ import org.springframework.http.MediaType;
 public enum Headers {
     CONTENT_TYPE(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE),
     ACCEPT(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE),
-    X_AUTHENTICATION("X-Authentication", null),
-    X_APPLICATION("X-Application", null),
+    X_AUTHENTICATION("X-Authentication", ""),
+    X_APPLICATION("X-Application", ""),
     X_IP("X-IP", "127.0.0.1");
 
     private final String header;

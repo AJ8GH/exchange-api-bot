@@ -51,6 +51,7 @@
         <javax.annotation.version>1.1.0.v201108011116</javax.annotation.version>
         <jaxb-api.version>2.2.12</jaxb-api.version>
         <jaxb-impl.version>2.2.11</jaxb-impl.version>
+        <jmxtools.version>1.2.1</jmxtools.version>
         <junit.version>5.8.2</junit.version>
         <lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
         <log4j.version>2.17.1</log4j.version>
@@ -66,6 +67,8 @@
         <swagger-annotations.version>1.6.2</swagger-annotations.version>
         <swagger-codegen-maven-plugin.version>2.1.5</swagger-codegen-maven-plugin.version>
         <wiremock.version>2.27.2</wiremock.version>
+        <micrometer.jmx>1.8.3</micrometer.jmx>
+        <jakarta-validation.version>2.0.2</jakarta-validation.version>
 
         <jacoco.haltOnFailure>true</jacoco.haltOnFailure>
         <jacoco.phase>test</jacoco.phase>
@@ -117,6 +120,16 @@
                 <artifactId>spring-shell-starter</artifactId>
                 <version>${spring-shell.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-actuator</artifactId>
+                <version>${springboot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.shell</groupId>
+                <artifactId>spring-shell-core</artifactId>
+                <version>${spring-shell.version}</version>
+            </dependency>
 
             <!-- Util -->
             <dependency>
@@ -128,6 +141,21 @@
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-core</artifactId>
                 <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sun.jdmk</groupId>
+                <artifactId>jmxtools</artifactId>
+                <version>${jmxtools.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.micrometer</groupId>
+                <artifactId>micrometer-registry-jmx</artifactId>
+                <version>${micrometer.jmx}</version>
+            </dependency>
+            <dependency>
+                <groupId>jakarta.validation</groupId>
+                <artifactId>jakarta.validation-api</artifactId>
+                <version>${jakarta-validation.version}</version>
             </dependency>
 
             <!-- Swagger -->
