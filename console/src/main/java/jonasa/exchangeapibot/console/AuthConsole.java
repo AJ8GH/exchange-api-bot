@@ -5,10 +5,12 @@ import jonasa.exchangeapibot.auth.session.SessionSupplier;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 
+import java.util.function.Supplier;
+
 @ShellComponent
 public class AuthConsole {
 
-    private final SessionSupplier sessionSupplier;
+    private final Supplier<Session> sessionSupplier;
 
     public AuthConsole(SessionSupplier sessionSupplier) {
         this.sessionSupplier = sessionSupplier;
@@ -17,15 +19,5 @@ public class AuthConsole {
     @ShellMethod("Authenticates a new session")
     public Session login() {
         return sessionSupplier.get();
-    }
-
-    @ShellMethod("Sets the max session duration")
-    public void setSessionTtl(long ttl) {
-        sessionSupplier.setSessionTtl(ttl);
-    }
-
-    @ShellMethod("Keeps the current session alive")
-    public void setKeepAlive(long freq) {
-        sessionSupplier.setKeepAliveFreq(freq);
     }
 }
