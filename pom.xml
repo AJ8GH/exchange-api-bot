@@ -18,6 +18,7 @@
         <module>domain</module>
         <module>launcher</module>
         <module>schema</module>
+        <module>jmx</module>
     </modules>
 
     <repositories>
@@ -49,9 +50,6 @@
         <jackson.version>2.13.1</jackson.version>
         <jacoco.version>0.8.7</jacoco.version>
         <javax.annotation.version>1.1.0.v201108011116</javax.annotation.version>
-        <jaxb-api.version>2.2.12</jaxb-api.version>
-        <jaxb-impl.version>2.2.11</jaxb-impl.version>
-        <jmxtools.version>1.2.1</jmxtools.version>
         <junit.version>5.8.2</junit.version>
         <lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
         <log4j.version>2.17.1</log4j.version>
@@ -79,6 +77,7 @@
         <console.artifactId>console</console.artifactId>
         <coverage.artifactId>coverage</coverage.artifactId>
         <domain.artifactId>domain</domain.artifactId>
+        <jmx.artifactId>jmx</jmx.artifactId>
         <launcher.artifactId>launcher</launcher.artifactId>
         <schema.artifactId>schema</schema.artifactId>
     </properties>
@@ -141,11 +140,6 @@
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-core</artifactId>
                 <version>${jackson.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.sun.jdmk</groupId>
-                <artifactId>jmxtools</artifactId>
-                <version>${jmxtools.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.micrometer</groupId>

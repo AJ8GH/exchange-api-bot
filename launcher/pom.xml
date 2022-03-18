@@ -69,25 +69,26 @@
     <dependencies>
         <!-- Project -->
         <dependency>
-            <groupId>jonasa</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>${auth.artifactId}</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>jonasa</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>${domain.artifactId}</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>jonasa</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>${console.artifactId}</artifactId>
             <version>${project.version}</version>
         </dependency>
-
         <dependency>
-            <groupId>com.sun.jdmk</groupId>
-            <artifactId>jmxtools</artifactId>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>${jmx.artifactId}</artifactId>
+            <version>${project.version}</version>
         </dependency>
+
         <dependency>
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-registry-jmx</artifactId>

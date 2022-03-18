@@ -63,8 +63,8 @@
 
         <!-- Exchange -->
         <dependency>
-            <groupId>jonasa</groupId>
-            <artifactId>domain</artifactId>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>${domain.artifactId}</artifactId>
             <version>${project.version}</version>
         </dependency>
 
