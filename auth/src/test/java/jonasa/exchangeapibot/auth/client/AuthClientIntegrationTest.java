@@ -25,11 +25,11 @@ import static com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo;
 import static jonasa.exchangeapibot.auth.util.AuthOperations.KEEP_ALIVE;
 import static jonasa.exchangeapibot.auth.util.AuthOperations.LOGIN;
 import static jonasa.exchangeapibot.auth.util.AuthOperations.LOGOUT;
-import static jonasa.exchangeapibot.auth.util.Headers.ACCEPT;
-import static jonasa.exchangeapibot.auth.util.Headers.CONTENT_TYPE;
-import static jonasa.exchangeapibot.auth.util.Headers.X_APPLICATION;
-import static jonasa.exchangeapibot.auth.util.Headers.X_AUTHENTICATION;
-import static jonasa.exchangeapibot.auth.util.Headers.X_IP;
+import static jonasa.exchangeapibot.util.Headers.ACCEPT;
+import static jonasa.exchangeapibot.util.Headers.CONTENT_TYPE;
+import static jonasa.exchangeapibot.util.Headers.X_APPLICATION;
+import static jonasa.exchangeapibot.util.Headers.X_AUTHENTICATION;
+import static jonasa.exchangeapibot.util.Headers.X_IP;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -65,7 +65,6 @@ class AuthClientIntegrationTest {
                 .defaultHeader(ACCEPT.header(), ACCEPT.value())
                 .defaultHeader(X_IP.header(), X_IP.value())
                 .defaultHeader(X_APPLICATION.header(), APP_KEY)
-                .basicAuthentication(USERNAME, PASSWORD)
                 .setConnectTimeout(Duration.ofSeconds(TIMEOUT))
                 .setReadTimeout(Duration.ofSeconds(TIMEOUT))
                 .build();

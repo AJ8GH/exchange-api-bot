@@ -7,13 +7,13 @@ public enum AuthOperations {
 
     private static final String PATH_DELIMITER = "/";
 
-    private final String value;
+    private final String operation;
 
-    AuthOperations(String value) {
-        this.value = value;
+    AuthOperations(String operation) {
+        this.operation = operation;
     }
 
     public String path() {
-        return PATH_DELIMITER + value;
+        return PATH_DELIMITER + operation;
     }
 }

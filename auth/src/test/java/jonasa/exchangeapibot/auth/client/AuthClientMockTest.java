@@ -3,7 +3,7 @@ package jonasa.exchangeapibot.auth.client;
 import jonasa.exchangeapibot.auth.enums.AuthErrorCode;
 import jonasa.exchangeapibot.auth.enums.AuthStatus;
 import jonasa.exchangeapibot.auth.types.AuthResponse;
-import jonasa.exchangeapibot.auth.util.Headers;
+import jonasa.exchangeapibot.util.Headers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

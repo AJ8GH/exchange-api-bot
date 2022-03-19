@@ -1,2 +1,4 @@
-**/*secret.properties
-w
+**/*.properties
+!**/*overrides.properties
+!**/*test.properties
+!**/*jmx.properties

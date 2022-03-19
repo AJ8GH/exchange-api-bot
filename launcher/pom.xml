@@ -75,7 +75,7 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>${domain.artifactId}</artifactId>
+            <artifactId>${betting.artifactId}</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
@@ -85,14 +85,15 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
+            <artifactId>${domain.artifactId}</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
             <artifactId>${jmx.artifactId}</artifactId>
             <version>${project.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>io.micrometer</groupId>
-            <artifactId>micrometer-registry-jmx</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
@@ -114,6 +115,10 @@
         <dependency>
             <groupId>org.awaitility</groupId>
             <artifactId>awaitility</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.tomakehurst</groupId>
+            <artifactId>wiremock-standalone</artifactId>
         </dependency>
 
     </dependencies>

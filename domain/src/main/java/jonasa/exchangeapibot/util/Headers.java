@@ -1,4 +1,4 @@
-package jonasa.exchangeapibot.auth.util;
+package jonasa.exchangeapibot.util;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;

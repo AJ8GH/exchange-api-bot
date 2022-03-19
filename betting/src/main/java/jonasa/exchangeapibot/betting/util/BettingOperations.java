@@ -20,17 +20,13 @@ public enum BettingOperations {
     UPDATE_ORDERS("updateOrders");
 
     private static final String PATH_DELIMITER = "/";
-    private final String value;
+    private final String operation;
 
-    BettingOperations(String value) {
-        this.value = value;
-    }
-
-    public String value() {
-        return value;
+    BettingOperations(String operation) {
+        this.operation = operation;
     }
 
     public String path() {
-        return PATH_DELIMITER + value;
+        return PATH_DELIMITER + operation + PATH_DELIMITER;
     }
 }

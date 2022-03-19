@@ -142,6 +142,11 @@
                 <version>${jackson.version}</version>
             </dependency>
             <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>io.micrometer</groupId>
                 <artifactId>micrometer-registry-jmx</artifactId>
                 <version>${micrometer.jmx}</version>
@@ -234,7 +239,7 @@
             </dependency>
             <dependency>
                 <groupId>com.github.tomakehurst</groupId>
-                <artifactId>wiremock-jre8</artifactId>
+                <artifactId>wiremock-standalone</artifactId>
                 <version>${wiremock.version}</version>
                 <scope>test</scope>
             </dependency>
