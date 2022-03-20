@@ -19,6 +19,7 @@
         <module>launcher</module>
         <module>schema</module>
         <module>jmx</module>
+        <module>jar</module>
     </modules>
 
     <repositories>
@@ -46,7 +47,6 @@
         <child.packaging>jar</child.packaging>
 
         <awaitility.version>3.1.6</awaitility.version>
-        <exec-maven-plugin.version>3.0.0</exec-maven-plugin.version>
         <jackson.version>2.13.1</jackson.version>
         <jacoco.version>0.8.7</jacoco.version>
         <javax.annotation.version>1.1.0.v201108011116</javax.annotation.version>
@@ -54,8 +54,8 @@
         <lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
         <log4j.version>2.17.1</log4j.version>
         <lombok.version>1.18.22</lombok.version>
+        <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
-        <maven-jar-plugin.version>3.2.2</maven-jar-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
         <mockito.version>4.1.0</mockito.version>
         <slf4j.version>1.7.35</slf4j.version>
