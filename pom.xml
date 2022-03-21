@@ -19,7 +19,6 @@
         <module>launcher</module>
         <module>schema</module>
         <module>jmx</module>
-        <module>jar</module>
     </modules>
 
     <repositories>
@@ -39,17 +38,24 @@
     </repositories>
 
     <properties>
+        <!-- Project -->
         <java.version>11</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
         <child.packaging>jar</child.packaging>
+        <jacoco.haltOnFailure>true</jacoco.haltOnFailure>
+        <jacoco.phase>test</jacoco.phase>
+        <jacoco.target>0.8</jacoco.target>
 
+        <!-- Versions -->
         <awaitility.version>3.1.6</awaitility.version>
         <jackson.version>2.13.1</jackson.version>
         <jacoco.version>0.8.7</jacoco.version>
+        <jakarta-validation.version>2.0.2</jakarta-validation.version>
         <javax.annotation.version>1.1.0.v201108011116</javax.annotation.version>
+        <jmxtools.version>1.2.1</jmxtools.version>
         <junit.version>5.8.2</junit.version>
         <lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
         <log4j.version>2.17.1</log4j.version>
@@ -57,6 +63,7 @@
         <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
+        <micrometer.jmx>1.8.3</micrometer.jmx>
         <mockito.version>4.1.0</mockito.version>
         <slf4j.version>1.7.35</slf4j.version>
         <springboot.version>2.6.3</springboot.version>
@@ -65,13 +72,8 @@
         <swagger-annotations.version>1.6.2</swagger-annotations.version>
         <swagger-codegen-maven-plugin.version>2.1.5</swagger-codegen-maven-plugin.version>
         <wiremock.version>2.27.2</wiremock.version>
-        <micrometer.jmx>1.8.3</micrometer.jmx>
-        <jakarta-validation.version>2.0.2</jakarta-validation.version>
 
-        <jacoco.haltOnFailure>true</jacoco.haltOnFailure>
-        <jacoco.phase>test</jacoco.phase>
-        <jacoco.target>0.8</jacoco.target>
-
+        <!-- Modules -->
         <auth.artifactId>auth</auth.artifactId>
         <betting.artifactId>betting</betting.artifactId>
         <console.artifactId>console</console.artifactId>
@@ -89,6 +91,14 @@
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <version>${spring-boot-maven-plugin.version}</version>
+                    <configuration>
+                        <excludes>
+                            <exclude>
+                                <groupId>org.projectlombok</groupId>
+                                <artifactId>lombok</artifactId>
+                            </exclude>
+                        </excludes>
+                    </configuration>
                 </plugin>
 
                 <plugin>
@@ -96,12 +106,90 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${maven-surefire-plugin.version}</version>
                 </plugin>
+
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>${jacoco.version}</version>
+                    <configuration>
+                        <excludes>
+                            <exclude>**/config/*</exclude>
+                            <exclude>**/*Operations*</exclude>
+                            <exclude>**/Headers.java</exclude>
+                            <exclude>**/com/betfair/**/*</exclude>
+                        </excludes>
+                        <haltOnFailure>${jacoco.haltOnFailure}</haltOnFailure>
+                        <rules>
+                            <rule>
+                                <element>BUNDLE</element>
+                                <limits>
+                                    <limit>
+                                        <counter>INSTRUCTION</counter>
+                                        <value>COVEREDRATIO</value>
+                                        <minimum>${jacoco.target}</minimum>
+                                    </limit>
+                                </limits>
+                            </rule>
+                        </rules>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>default-prepare-agent</id>
+                            <goals>
+                                <goal>prepare-agent</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>report</id>
+                            <phase>${jacoco.phase}</phase>
+                            <goals>
+                                <goal>report</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
 
     <dependencyManagement>
         <dependencies>
+            <!-- Modules -->
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>${auth.artifactId}</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>${betting.artifactId}</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>${console.artifactId}</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>${domain.artifactId}</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>${jmx.artifactId}</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>${launcher.artifactId}</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>${schema.artifactId}</artifactId>
+                <version>${project.version}</version>
+            </dependency>
 
             <!-- Spring -->
             <dependency>

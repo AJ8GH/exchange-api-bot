@@ -11,19 +11,21 @@
 
 ## Get started
 
-Ensure Java 17 and maven are installed.
+Install Java 17 and Maven 3 if needed.
 
 ```shell
-$ git clone git@github.com:AJ8GH/exchange-api-bot.git
-$ cd exchange-api-bot
-$ mvn clean install
+git clone git@github.com:AJ8GH/exchange-api-bot.git
+cd exchange-api-bot
+mvn clean install
 ```
 
-Create properties file `<class-path>:/conf/api-secret.properties`
+# Running App
+
+Create properties file `<class-path>:/conf/<env>.properties`
 
 Add account properties:
 
-```
+```properties
 esa.appKey=<value>
 esa.username=<value>
 esa.password=<value>
@@ -31,4 +33,10 @@ esa.password=<value>
 api.appKey=<value>
 api.username=<value>
 api.password=<value>
+```
+
+Run with env name from above properties file.
+
+```shell
+mvn springboot:run
 ```

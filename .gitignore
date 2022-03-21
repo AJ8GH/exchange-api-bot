@@ -1,4 +1,13 @@
 **/*.properties
 !**/*overrides.properties
+!**/*defaults.properties
 !**/*test.properties
 !**/*jmx.properties
+**/log
+**/*.log
+**/*.iml
+**/target
+**/.idea
+.DS_Store
+**/*.DS_Store
+**/*.class

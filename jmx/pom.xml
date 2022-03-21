@@ -14,29 +14,30 @@
     <packaging>${child.packaging}</packaging>
     <name>${project.artifactId}</name>
 
-    <properties>
-        <jmxtools.version>1.2.1</jmxtools.version>
-    </properties>
-
     <dependencies>
+        <!-- Spring -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
-        <dependency>
-            <groupId>io.micrometer</groupId>
-            <artifactId>micrometer-registry-jmx</artifactId>
-        </dependency>
+
+        <!-- Util -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
         </dependency>
+
+        <!-- JMX -->
         <dependency>
             <groupId>com.sun.jdmk</groupId>
             <artifactId>jmxtools</artifactId>
             <version>${jmxtools.version}</version>
             <scope>system</scope>
             <systemPath>${basedir}/lib/jmxtools-1.2.1.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-jmx</artifactId>
         </dependency>
     </dependencies>
 </project>

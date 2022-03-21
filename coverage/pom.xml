@@ -11,7 +11,7 @@
     </parent>
 
     <artifactId>coverage</artifactId>
-    <packaging>${child.packaging}</packaging>
+    <packaging>pom</packaging>
     <name>${project.artifactId}</name>
 
     <build>
@@ -19,28 +19,6 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>${jacoco.version}</version>
-                <configuration>
-                    <excludes>
-                        <exclude>**/config/*</exclude> <!-- config classes -->
-                        <exclude>**/*Operations*</exclude> <!-- Operations util -->
-                        <exclude>**/Headers.java</exclude> <!-- Headers util -->
-                        <exclude>**/com/betfair/**/*</exclude> <!-- generated classes -->
-                    </excludes>
-                    <haltOnFailure>${jacoco.haltOnFailure}</haltOnFailure>
-                    <rules>
-                        <rule>
-                            <element>BUNDLE</element>
-                            <limits>
-                                <limit>
-                                    <counter>INSTRUCTION</counter>
-                                    <value>COVEREDRATIO</value>
-                                    <minimum>${jacoco.target}</minimum>
-                                </limit>
-                            </limits>
-                        </rule>
-                    </rules>
-                </configuration>
                 <executions>
                     <execution>
                         <goals>
@@ -66,20 +44,18 @@
     </build>
 
     <dependencies>
+        <!-- Modules -->
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>${launcher.artifactId}</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>${betting.artifactId}</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>${auth.artifactId}</artifactId>
-            <version>${project.version}</version>
         </dependency>
     </dependencies>
 </project>
