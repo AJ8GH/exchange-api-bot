@@ -83,7 +83,6 @@
         <console.artifactId>console</console.artifactId>
         <coverage.artifactId>coverage</coverage.artifactId>
         <domain.artifactId>domain</domain.artifactId>
-        <jmx.artifactId>jmx</jmx.artifactId>
         <launcher.artifactId>launcher</launcher.artifactId>
         <schema.artifactId>schema</schema.artifactId>
     </properties>
@@ -177,11 +176,6 @@
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>${domain.artifactId}</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>${jmx.artifactId}</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

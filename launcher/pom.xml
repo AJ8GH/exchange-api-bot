@@ -48,10 +48,6 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>${jmx.artifactId}</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
             <artifactId>${schema.artifactId}</artifactId>
         </dependency>
 
