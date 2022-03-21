@@ -22,6 +22,11 @@
 
     <repositories>
         <repository>
+            <id>aj-artifacts</id>
+            <name>AJ Artifacts Repository</name>
+            <url>https://raw.github.com/aj-artifacts/jmx/</url>
+        </repository>
+        <repository>
             <id>central</id>
             <name>Maven Repository Switchboard</name>
             <url>https://repo1.maven.org/maven2/</url>
@@ -33,11 +38,6 @@
             <id>repository.spring.milestone</id>
             <name>Spring Milestone Repository</name>
             <url>https://repo.spring.io/milestone</url>
-        </repository>
-        <repository>
-            <id>aj-artifacts</id>
-            <name>AJ Artifacts Repository</name>
-            <url>https://raw.githubusercontent.com/aj-artifacts/jmx/</url>
         </repository>
     </repositories>
 
