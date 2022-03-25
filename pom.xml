@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>jonasa</groupId>
-    <artifactId>exchange-api-bot</artifactId>
+    <groupId>io.github.aj8gh</groupId>
+    <artifactId>bot</artifactId>
     <name>${project.artifactId}</name>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
@@ -43,15 +43,17 @@
 
     <properties>
         <!-- Project -->
+        <child.packaging>jar</child.packaging>
+        <default.package>${project.groupId}.${project.parent.artifactId}</default.package>
+        <jacoco.haltOnFailure>true</jacoco.haltOnFailure>
+        <jacoco.phase>test</jacoco.phase>
+        <jacoco.target>0.8</jacoco.target>
         <java.version>11</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
-        <child.packaging>jar</child.packaging>
-        <jacoco.haltOnFailure>true</jacoco.haltOnFailure>
-        <jacoco.phase>test</jacoco.phase>
-        <jacoco.target>0.8</jacoco.target>
+        <start-class>${default.package}.BotApplication</start-class>
 
         <!-- Versions -->
         <awaitility.version>3.1.6</awaitility.version>
@@ -66,6 +68,7 @@
         <lombok.version>1.18.22</lombok.version>
         <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+        <maven-jar-plugin.version>3.2.2</maven-jar-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
         <micrometer.jmx>1.8.3</micrometer.jmx>
         <mockito.version>4.1.0</mockito.version>
@@ -91,16 +94,70 @@
         <pluginManagement>
             <plugins>
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>${maven-assembly-plugin.version}</version>
+                    <configuration>
+                        <finalName>bot</finalName>
+                        <appendAssemblyId>false</appendAssemblyId>
+                        <descriptorRefs>
+                            <descriptorRef>jar-with-dependencies</descriptorRef>
+                        </descriptorRefs>
+                        <archive>
+                            <index>true</index>
+                            <manifest>
+                                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                                <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                                <addClasspath>true</addClasspath>
+                                <mainClass>${start-class}</mainClass>
+                            </manifest>
+                        </archive>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>make-assembly</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>single</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <version>${spring-boot-maven-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>repackage</id>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                            <configuration>
+                                <mainClass>${start-class}</mainClass>
+                                <executable>true</executable>
+                                <finalName>bot</finalName>
+                            </configuration>
+                        </execution>
+                    </executions>
                     <configuration>
                         <excludes>
                             <exclude>
-                                <groupId>org.projectlombok</groupId>
-                                <artifactId>lombok</artifactId>
+                                <groupId>${project.groupId}</groupId>
+                                <artifactId>coverage</artifactId>
                             </exclude>
                         </excludes>
+                        <mainClass>${start-class}</mainClass>
                     </configuration>
                 </plugin>
 
