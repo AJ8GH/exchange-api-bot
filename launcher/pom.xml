@@ -62,12 +62,6 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
-        <!-- Util -->
-        <dependency>
-            <groupId>com.sun.jdmk</groupId>
-            <artifactId>jmxtools</artifactId>
-        </dependency>
-
         <!-- Test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
