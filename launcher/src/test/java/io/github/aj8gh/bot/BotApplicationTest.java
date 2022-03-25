@@ -3,6 +3,7 @@ package io.github.aj8gh.bot;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.WireMockServer;
+import io.github.aj8gh.bot.domain.auth.enums.AuthStatus;
 import io.github.aj8gh.bot.domain.auth.types.AuthResponse;
 import io.github.aj8gh.bot.config.TestApplicationRunner;
 import org.junit.jupiter.api.AfterAll;
@@ -12,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.TestPropertySource;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.post;
@@ -23,6 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @SpringBootTest
 @ActiveProfiles("test")
 @Import(TestApplicationRunner.class)
+@TestPropertySource(locations = "classpath:conf/test.properties")
 class BotApplicationTest {
     private static final int PORT = 3000;
     private static final ObjectMapper MAPPER = new ObjectMapper();
@@ -32,10 +35,13 @@ class BotApplicationTest {
     static void setUp() throws JsonProcessingException {
         var authResponse = AuthResponse.builder()
                 .token("token")
+                .status(AuthStatus.SUCCESS)
+                .product("product")
                 .build();
 
         SERVER.stubFor(post(urlPathEqualTo(LOGIN.path()))
                 .willReturn(aResponse()
+                        .withStatus(200)
                         .withHeader(CONTENT_TYPE.header(), CONTENT_TYPE.value())
                         .withBody(MAPPER.writeValueAsString(authResponse))));
 

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.aj8gh.bot.auth.client.AuthClient;
 import io.github.aj8gh.bot.auth.session.SessionSupplier;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
@@ -24,6 +25,7 @@ import static io.github.aj8gh.bot.domain.util.Headers.CONTENT_TYPE;
 import static io.github.aj8gh.bot.domain.util.Headers.X_APPLICATION;
 import static io.github.aj8gh.bot.domain.util.Headers.X_IP;
 
+@Slf4j
 @Configuration
 class AuthConfig {
     private static final String USERNAME_PARAM = "username";
@@ -68,6 +70,7 @@ class AuthConfig {
 
     @Bean
     RestTemplate authRestTemplate() {
+        log.info(rootUri);
         return new RestTemplateBuilder()
                 .additionalMessageConverters(authJacksonConverter())
                 .rootUri(rootUri)
