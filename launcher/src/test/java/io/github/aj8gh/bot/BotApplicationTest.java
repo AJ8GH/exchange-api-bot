@@ -24,8 +24,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @ActiveProfiles("test")
 @Import(TestApplicationRunner.class)
 class BotApplicationTest {
+    private static final int PORT = 3000;
     private static final ObjectMapper MAPPER = new ObjectMapper();
-    private static final int PORT = 80;
     private static final WireMockServer SERVER = new WireMockServer(PORT);
 
     @BeforeAll
