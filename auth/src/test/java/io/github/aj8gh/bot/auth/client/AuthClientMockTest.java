@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.Mock;
+import org.springframework.boot.web.client.RootUriTemplateHandler;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.client.RestClientResponseException;
@@ -29,6 +30,7 @@ import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.openMocks;
 
 class AuthClientMockTest {
+    private static final String ROOT_URI = "http://localhost:3000/api/";
     private static final String LOGIN_QUERY = buildLoginQuery();
     private static final String LOGOUT_PATH = LOGOUT.path();
     private static final String KEEP_ALIVE_PATH = KEEP_ALIVE.path();
@@ -56,6 +58,8 @@ class AuthClientMockTest {
 
         when(restTemplate.postForObject(eq(LOGIN_QUERY), any(), eq(AuthResponse.class)))
                 .thenReturn(expectedResponse);
+        when(restTemplate.getUriTemplateHandler())
+                .thenReturn(new RootUriTemplateHandler(ROOT_URI));
 
         var response = authClient.login();
 
@@ -69,6 +73,8 @@ class AuthClientMockTest {
     void login_FailWithException_ReturnsEmptyOptional(Exception e) {
         when(restTemplate.postForObject(eq(LOGIN_QUERY), any(), eq(AuthResponse.class)))
                 .thenThrow(e);
+        when(restTemplate.getUriTemplateHandler())
+                .thenReturn(new RootUriTemplateHandler(ROOT_URI));
 
         var response = authClient.login();
 
@@ -82,6 +88,8 @@ class AuthClientMockTest {
                 .thenReturn(AuthResponse.builder()
                         .error(AuthErrorCode.PENDING_AUTH)
                         .build());
+        when(restTemplate.getUriTemplateHandler())
+                .thenReturn(new RootUriTemplateHandler(ROOT_URI));
 
         var response = authClient.login();
 

@@ -5,8 +5,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.shell.standard.ShellComponent;
+
+import static org.springframework.context.annotation.ComponentScan.Filter;
 
 @SpringBootApplication
+@ComponentScan(excludeFilters = @Filter(ShellComponent.class))
 public class BotApplication {
     private static final Logger LOG = LoggerFactory.getLogger(BotApplication.class);
 

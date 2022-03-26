@@ -9,7 +9,6 @@ import java.util.function.Supplier;
 
 @ShellComponent
 public class AuthConsole {
-
     private final Supplier<Session> sessionSupplier;
 
     public AuthConsole(SessionSupplier sessionSupplier) {

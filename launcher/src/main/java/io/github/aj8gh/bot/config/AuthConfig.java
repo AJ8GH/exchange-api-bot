@@ -70,7 +70,6 @@ class AuthConfig {
 
     @Bean
     RestTemplate authRestTemplate() {
-        log.info(rootUri);
         return new RestTemplateBuilder()
                 .additionalMessageConverters(authJacksonConverter())
                 .rootUri(rootUri)

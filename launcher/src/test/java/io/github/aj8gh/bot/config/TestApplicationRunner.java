@@ -23,5 +23,6 @@ public class TestApplicationRunner implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) {
+        // Do nothing
     }
 }

@@ -28,7 +28,10 @@ public class AuthClient {
     }
 
     public Optional<AuthResponse> login() {
-        LOG.info("*** Authenticating ***");
+        var loginUri = restTemplate
+                .getUriTemplateHandler()
+                .expand("/") + LOGIN.operation();
+        LOG.info("Authenticating at {}", loginUri);
         return sendRequest(loginQuery, null);
     }
 

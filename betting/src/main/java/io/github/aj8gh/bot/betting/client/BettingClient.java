@@ -18,7 +18,6 @@ import static java.util.Collections.emptyList;
 
 public class BettingClient {
     private static final Logger LOG = LoggerFactory.getLogger(BettingClient.class);
-
     private final RestTemplate restTemplate;
 
     public BettingClient(RestTemplate restTemplate) {

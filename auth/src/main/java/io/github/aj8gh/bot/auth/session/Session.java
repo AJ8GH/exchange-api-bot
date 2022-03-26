@@ -15,7 +15,6 @@ public final class Session {
     private final Instant createTime = Instant.now();
     @NonNull
     private final String token;
-
     private final String product;
     @Setter(AccessLevel.NONE)
     @Getter(AccessLevel.NONE)

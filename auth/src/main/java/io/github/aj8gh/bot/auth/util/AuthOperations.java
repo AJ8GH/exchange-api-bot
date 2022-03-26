@@ -16,4 +16,8 @@ public enum AuthOperations {
     public String path() {
         return PATH_DELIMITER + operation;
     }
+
+    public String operation() {
+        return operation;
+    }
 }
