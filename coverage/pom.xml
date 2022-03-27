@@ -47,7 +47,7 @@
         <!-- Modules -->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>${launcher.artifactId}</artifactId>
+            <artifactId>${auth.artifactId}</artifactId>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
@@ -55,7 +55,11 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>${auth.artifactId}</artifactId>
+            <artifactId>${http.artifactId}</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>${launcher.artifactId}</artifactId>
         </dependency>
     </dependencies>
 </project>
