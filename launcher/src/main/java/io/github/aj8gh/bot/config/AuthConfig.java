@@ -21,17 +21,16 @@ import java.util.concurrent.ScheduledExecutorService;
 
 import static com.fasterxml.jackson.databind.DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT;
 import static io.github.aj8gh.bot.http.operations.AuthOperations.LOGIN;
-import static io.github.aj8gh.bot.http.client.Headers.ACCEPT;
-import static io.github.aj8gh.bot.http.client.Headers.CONTENT_TYPE;
-import static io.github.aj8gh.bot.http.client.Headers.X_APPLICATION;
-import static io.github.aj8gh.bot.http.client.Headers.X_IP;
+import static io.github.aj8gh.bot.http.util.Headers.ACCEPT;
+import static io.github.aj8gh.bot.http.util.Headers.CONTENT_TYPE;
+import static io.github.aj8gh.bot.http.util.Headers.X_APPLICATION;
+import static io.github.aj8gh.bot.http.util.Headers.X_IP;
+import static io.github.aj8gh.bot.http.util.Params.PASSWORD;
+import static io.github.aj8gh.bot.http.util.Params.USERNAME;
 
 @Slf4j
 @Configuration
 class AuthConfig {
-    private static final String USERNAME_PARAM = "username";
-    private static final String PASSWORD_PARAM = "password";
-
     @Value("${api.username}")
     private String username;
     @Value("${api.password}")
@@ -62,8 +61,8 @@ class AuthConfig {
     AuthClient authClient() {
         var loginQueryString = UriComponentsBuilder
                 .fromUriString(LOGIN.path())
-                .queryParam(USERNAME_PARAM, username)
-                .queryParam(PASSWORD_PARAM, password)
+                .queryParam(USERNAME.param(), username)
+                .queryParam(PASSWORD.param(), password)
                 .toUriString();
         return new AuthClient(authHttpClient(), loginQueryString);
     }

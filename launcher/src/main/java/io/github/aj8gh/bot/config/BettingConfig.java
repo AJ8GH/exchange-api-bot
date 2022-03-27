@@ -17,11 +17,11 @@ import java.time.Duration;
 import java.util.function.Supplier;
 
 import static com.fasterxml.jackson.databind.DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT;
-import static io.github.aj8gh.bot.http.client.Headers.ACCEPT;
-import static io.github.aj8gh.bot.http.client.Headers.CONTENT_TYPE;
-import static io.github.aj8gh.bot.http.client.Headers.X_APPLICATION;
-import static io.github.aj8gh.bot.http.client.Headers.X_AUTHENTICATION;
-import static io.github.aj8gh.bot.http.client.Headers.X_IP;
+import static io.github.aj8gh.bot.http.util.Headers.ACCEPT;
+import static io.github.aj8gh.bot.http.util.Headers.CONTENT_TYPE;
+import static io.github.aj8gh.bot.http.util.Headers.X_APPLICATION;
+import static io.github.aj8gh.bot.http.util.Headers.X_AUTHENTICATION;
+import static io.github.aj8gh.bot.http.util.Headers.X_IP;
 
 @Configuration
 class BettingConfig {

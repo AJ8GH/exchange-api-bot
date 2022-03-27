@@ -9,7 +9,7 @@ import org.springframework.http.HttpHeaders;
 
 import java.util.Optional;
 
-import static io.github.aj8gh.bot.http.client.Headers.X_AUTHENTICATION;
+import static io.github.aj8gh.bot.http.util.Headers.X_AUTHENTICATION;
 import static io.github.aj8gh.bot.http.operations.AuthOperations.*;
 
 public class AuthClient {

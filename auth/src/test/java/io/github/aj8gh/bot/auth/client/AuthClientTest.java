@@ -3,7 +3,7 @@ package io.github.aj8gh.bot.auth.client;
 import io.github.aj8gh.bot.domain.auth.enums.AuthErrorCode;
 import io.github.aj8gh.bot.domain.auth.enums.AuthStatus;
 import io.github.aj8gh.bot.domain.auth.types.AuthResponse;
-import io.github.aj8gh.bot.http.client.Headers;
+import io.github.aj8gh.bot.http.util.Headers;
 import io.github.aj8gh.bot.http.client.HttpClient;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

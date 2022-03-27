@@ -20,7 +20,7 @@ import java.util.Map;
 
 import static com.fasterxml.jackson.databind.DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT;
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
-import static io.github.aj8gh.bot.http.client.Headers.*;
+import static io.github.aj8gh.bot.http.util.Headers.*;
 import static io.github.aj8gh.bot.http.operations.BettingOperations.LIST_EVENT_TYPES;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
