@@ -35,12 +35,12 @@ class BettingClientTest {
         var request = new HttpEntity<>(Map.of("filter", requestBody));
         var expectedResponse = new EventTypeResult[] { new EventTypeResult() };
 
-        when(httpClient.sendRequest(
+        when(httpClient.post(
                 LIST_EVENT_TYPES.path(), request, EventTypeResult[].class))
                 .thenReturn(Optional.of(expectedResponse));
 
         var response = bettingClient.listEventTypes(requestBody);
-        verify(httpClient).sendRequest(
+        verify(httpClient).post(
                 LIST_EVENT_TYPES.path(), request, EventTypeResult[].class);
         assertArrayEquals(expectedResponse, response.toArray());
     }

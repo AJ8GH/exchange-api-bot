@@ -53,12 +53,12 @@ class AuthClientTest {
                 .status(AuthStatus.SUCCESS)
                 .build();
 
-        when(httpClient.sendRequest(eq(LOGIN_QUERY), any(), eq(AuthResponse.class)))
+        when(httpClient.post(eq(LOGIN_QUERY), any(), eq(AuthResponse.class)))
                 .thenReturn(Optional.of(expectedResponse));
 
         var response = authClient.login();
 
-        verify(httpClient).sendRequest(eq(LOGIN_QUERY), any(), eq(AuthResponse.class));
+        verify(httpClient).post(eq(LOGIN_QUERY), any(), eq(AuthResponse.class));
         assertTrue(response.isPresent(), "Expected response to be present");
         assertEquals(expectedResponse, response.get());
     }
@@ -71,12 +71,12 @@ class AuthClientTest {
                                                     .status(AuthStatus.FAIL)
                                                     .build();
 
-        when(httpClient.sendRequest(eq(LOGIN_QUERY), any(), eq(AuthResponse.class)))
+        when(httpClient.post(eq(LOGIN_QUERY), any(), eq(AuthResponse.class)))
                 .thenReturn(Optional.of(expectedResponse));
 
         var response = authClient.login();
 
-        verify(httpClient).sendRequest(eq(LOGIN_QUERY), any(), eq(AuthResponse.class));
+        verify(httpClient).post(eq(LOGIN_QUERY), any(), eq(AuthResponse.class));
         assertTrue(response.isEmpty(), "Expected response to be empty");
     }
 
@@ -93,7 +93,7 @@ class AuthClientTest {
         expectedHeaders.add(Headers.X_AUTHENTICATION.header(), TOKEN);
         var expectedRequest = new HttpEntity<>(expectedHeaders);
 
-        when(httpClient.sendRequest(eq(path), any(), eq(AuthResponse.class)))
+        when(httpClient.post(eq(path), any(), eq(AuthResponse.class)))
                 .thenReturn(Optional.of(expectedResponse));
 
         var response = path.equals(KEEP_ALIVE_PATH) ?
@@ -102,7 +102,7 @@ class AuthClientTest {
 
         assertTrue(response.isPresent(), "Expected response to be present");
         assertEquals(expectedResponse, response.get());
-        verify(httpClient).sendRequest(path, expectedRequest, AuthResponse.class);
+        verify(httpClient).post(path, expectedRequest, AuthResponse.class);
     }
 
     @ParameterizedTest
@@ -118,7 +118,7 @@ class AuthClientTest {
         expectedHeaders.add(Headers.X_AUTHENTICATION.header(), TOKEN);
         var expectedRequest = new HttpEntity<>(expectedHeaders);
 
-        when(httpClient.sendRequest(eq(path), any(), eq(AuthResponse.class)))
+        when(httpClient.post(eq(path), any(), eq(AuthResponse.class)))
                 .thenReturn(Optional.of(expectedResponse));
 
         var response = path.equals(KEEP_ALIVE_PATH) ?
@@ -126,7 +126,7 @@ class AuthClientTest {
                 authClient.logout(TOKEN);
 
         assertTrue(response.isEmpty(), "Expected response to be empty");
-        verify(httpClient).sendRequest(path, expectedRequest, AuthResponse.class);
+        verify(httpClient).post(path, expectedRequest, AuthResponse.class);
     }
 
     private static Collection<String> pathProvider() {

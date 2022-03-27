@@ -5,7 +5,9 @@ import io.github.aj8gh.bot.domain.betting.types.MarketFilter;
 import io.github.aj8gh.bot.http.client.HttpClient;
 import org.springframework.http.HttpEntity;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 import static io.github.aj8gh.bot.http.operations.BettingOperations.LIST_EVENT_TYPES;
 import static java.util.Collections.emptyList;
@@ -18,7 +20,7 @@ public class BettingClient {
     }
 
     public List<EventTypeResult> listEventTypes(MarketFilter filter) {
-        return httpClient.sendRequest(
+        return httpClient.post(
                 LIST_EVENT_TYPES.path(),
                 new HttpEntity<>(Map.of("filter", filter)),
                 EventTypeResult[].class

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.aj8gh.bot.auth.session.Session;
 import io.github.aj8gh.bot.betting.client.BettingClient;
 import io.github.aj8gh.bot.http.client.HttpClient;
+import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
@@ -51,7 +52,6 @@ class BettingConfig {
 
     @Bean
     RestTemplate bettingRestTemplate() {
-        String token = sessionSupplier.get().getToken();
         return new RestTemplateBuilder()
                 .additionalMessageConverters(bettingJacksonConverter())
                 .rootUri(rootUri)
@@ -59,7 +59,7 @@ class BettingConfig {
                 .defaultHeader(ACCEPT.header(), ACCEPT.value())
                 .defaultHeader(X_IP.header(), X_IP.value())
                 .defaultHeader(X_APPLICATION.header(), appKey)
-                .defaultHeader(X_AUTHENTICATION.header(), token)
+                .defaultHeader(X_AUTHENTICATION.header(), getSessionToken())
                 .setConnectTimeout(Duration.ofMillis(connectTimeout))
                 .setReadTimeout(Duration.ofMillis(readTimeout))
                 .build();
@@ -78,5 +78,13 @@ class BettingConfig {
         mapper.configure(ACCEPT_EMPTY_STRING_AS_NULL_OBJECT, true);
         mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
         return mapper;
+    }
+
+    private String getSessionToken() {
+        var session = sessionSupplier.get();
+        if (session == null) {
+            throw new BeanCreationException("Session is null");
+        }
+        return session.getToken();
     }
 }

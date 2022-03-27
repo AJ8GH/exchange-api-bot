@@ -41,7 +41,7 @@ class HttpClientTest {
                 LIST_EVENT_TYPES.path(), request, EventTypeResult[].class))
                 .thenReturn(expectedResponse);
 
-        var response = httpClient.sendRequest(
+        var response = httpClient.post(
                 LIST_EVENT_TYPES.path(), request, EventTypeResult[].class);
 
         verify(restTemplate).postForObject(
@@ -59,7 +59,7 @@ class HttpClientTest {
         when(restTemplate.postForObject(LIST_EVENT_TYPES.path(), request, EventTypeResult[].class))
                 .thenThrow(exception);
 
-        var response = httpClient.sendRequest(
+        var response = httpClient.post(
                 LIST_EVENT_TYPES.path(), request, EventTypeResult[].class);
         assertTrue(response.isEmpty());
     }

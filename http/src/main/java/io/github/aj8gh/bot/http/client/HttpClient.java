@@ -16,9 +16,9 @@ public class HttpClient {
         this.restTemplate = restTemplate;
     }
 
-    public <T> Optional<T> sendRequest(String path,
-                                       HttpEntity<?> request,
-                                       Class<T> type) {
+    public <T> Optional<T> post(String path,
+                                HttpEntity<?> request,
+                                Class<T> type) {
         try {
             var response = restTemplate.postForObject(path, request, type);
             return Optional.ofNullable(response);

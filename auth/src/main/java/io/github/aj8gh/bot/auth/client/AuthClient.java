@@ -40,7 +40,7 @@ public class AuthClient {
 
     private Optional<AuthResponse> sendRequest(String path,
                                                HttpEntity<Void> request) {
-        return httpClient.sendRequest(path, request, AuthResponse.class)
+        return httpClient.post(path, request, AuthResponse.class)
                 .map(response -> {
                     if (response.getError() == null) return response;
                     logResponseError(path, response);

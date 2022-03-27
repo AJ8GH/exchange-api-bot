@@ -32,12 +32,6 @@ public class SessionSupplier implements Supplier<Session> {
         return isActive() ? session : login();
     }
 
-    private void scheduleKeepAlive() {
-        final Runnable job = this::keepAlive;
-        future = scheduler.scheduleAtFixedRate(
-                job, keepAliveFreq, keepAliveFreq, MILLISECONDS);
-    }
-
     public void setSessionTtl(long sessionTtl) {
         this.sessionTtl = sessionTtl;
     }
@@ -54,9 +48,15 @@ public class SessionSupplier implements Supplier<Session> {
         }).orElse(null);
     }
 
+    private void scheduleKeepAlive() {
+        final Runnable job = this::keepAlive;
+        future = scheduler.scheduleAtFixedRate(
+                job, keepAliveFreq, keepAliveFreq, MILLISECONDS);
+    }
+
     private void keepAlive() {
-        authClient.keepAlive(get().getToken());
-        session.keepAlive();
+        authClient.keepAlive(get().getToken())
+                .ifPresent(response -> session.keepAlive());
     }
 
     private boolean isActive() {

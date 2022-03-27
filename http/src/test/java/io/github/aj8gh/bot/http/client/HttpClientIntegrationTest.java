@@ -91,7 +91,7 @@ class HttpClientIntegrationTest {
                         .withHeader(CONTENT_TYPE.header(), CONTENT_TYPE.value())
                         .withBody(MAPPER.writeValueAsString(expectedResponse))));
 
-        var response = httpClient.sendRequest(
+        var response = httpClient.post(
                 LIST_EVENT_TYPES.path(),
                 new HttpEntity<>(Map.of("filter", new MarketFilter())),
                 EventTypeResult[].class
@@ -110,7 +110,7 @@ class HttpClientIntegrationTest {
                 .withRequestBody(equalToJson(requestBody))
                 .willReturn(aResponse().withStatus(404)));
 
-        var response = httpClient.sendRequest(
+        var response = httpClient.post(
                 LIST_EVENT_TYPES.path(),
                 new HttpEntity<>(Map.of("filter", new MarketFilter())),
                 EventTypeResult[].class
