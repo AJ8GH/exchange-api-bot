@@ -1,4 +1,4 @@
-package io.github.aj8gh.bot.betting.util;
+package io.github.aj8gh.bot.http.operations;
 
 public enum BettingOperations {
     LIST_EVENT_TYPES("listEventTypes"),

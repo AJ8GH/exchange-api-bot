@@ -2,8 +2,9 @@ package io.github.aj8gh.bot.config;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.aj8gh.bot.auth.session.SessionSupplier;
+import io.github.aj8gh.bot.auth.session.Session;
 import io.github.aj8gh.bot.betting.client.BettingClient;
+import io.github.aj8gh.bot.http.client.HttpClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
@@ -12,17 +13,19 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.web.client.RestTemplate;
 
 import java.time.Duration;
+import java.util.function.Supplier;
 
 import static com.fasterxml.jackson.databind.DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT;
-import static io.github.aj8gh.bot.domain.util.Headers.ACCEPT;
-import static io.github.aj8gh.bot.domain.util.Headers.CONTENT_TYPE;
-import static io.github.aj8gh.bot.domain.util.Headers.X_APPLICATION;
-import static io.github.aj8gh.bot.domain.util.Headers.X_AUTHENTICATION;
-import static io.github.aj8gh.bot.domain.util.Headers.X_IP;
+import static io.github.aj8gh.bot.http.client.Headers.ACCEPT;
+import static io.github.aj8gh.bot.http.client.Headers.CONTENT_TYPE;
+import static io.github.aj8gh.bot.http.client.Headers.X_APPLICATION;
+import static io.github.aj8gh.bot.http.client.Headers.X_AUTHENTICATION;
+import static io.github.aj8gh.bot.http.client.Headers.X_IP;
 
 @Configuration
 class BettingConfig {
 
+    private final Supplier<Session> sessionSupplier;
     @Value("${api.appKey}")
     private String appKey;
     @Value("${betting.rootUri}")
@@ -32,13 +35,22 @@ class BettingConfig {
     @Value("${request.timeout.connect}")
     private long connectTimeout;
 
-    @Bean
-    BettingClient bettingClient(SessionSupplier sessionSupplier) {
-        return new BettingClient(bettingRestTemplate(sessionSupplier));
+    public BettingConfig(Supplier<Session> sessionSupplier) {
+        this.sessionSupplier = sessionSupplier;
     }
 
     @Bean
-    RestTemplate bettingRestTemplate(SessionSupplier sessionSupplier) {
+    BettingClient bettingClient() {
+        return new BettingClient(bettingHttpClient());
+    }
+
+    @Bean
+    HttpClient bettingHttpClient() {
+        return new HttpClient(bettingRestTemplate());
+    }
+
+    @Bean
+    RestTemplate bettingRestTemplate() {
         String token = sessionSupplier.get().getToken();
         return new RestTemplateBuilder()
                 .additionalMessageConverters(bettingJacksonConverter())

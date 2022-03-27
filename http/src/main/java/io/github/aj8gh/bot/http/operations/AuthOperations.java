@@ -1,4 +1,4 @@
-package io.github.aj8gh.bot.auth.util;
+package io.github.aj8gh.bot.http.operations;
 
 public enum AuthOperations {
     LOGIN("login"),

@@ -1,4 +1,4 @@
-package io.github.aj8gh.bot.domain.util;
+package io.github.aj8gh.bot.http.client;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;

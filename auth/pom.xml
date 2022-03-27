@@ -29,6 +29,10 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>${domain.artifactId}</artifactId>
         </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>${http.artifactId}</artifactId>
+        </dependency>
 
         <!-- Spring -->
         <dependency>

@@ -1,7 +1,6 @@
 package io.github.aj8gh.bot.auth.session;
 
 import io.github.aj8gh.bot.auth.client.AuthClient;
-import io.github.aj8gh.bot.auth.session.SessionSupplier;
 import io.github.aj8gh.bot.domain.auth.types.AuthResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -18,8 +18,8 @@ import org.springframework.test.context.TestPropertySource;
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.post;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo;
-import static io.github.aj8gh.bot.auth.util.AuthOperations.LOGIN;
-import static io.github.aj8gh.bot.domain.util.Headers.CONTENT_TYPE;
+import static io.github.aj8gh.bot.http.operations.AuthOperations.LOGIN;
+import static io.github.aj8gh.bot.http.client.Headers.CONTENT_TYPE;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest

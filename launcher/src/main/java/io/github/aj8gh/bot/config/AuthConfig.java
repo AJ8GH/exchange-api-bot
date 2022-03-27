@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.aj8gh.bot.auth.client.AuthClient;
 import io.github.aj8gh.bot.auth.session.SessionSupplier;
+import io.github.aj8gh.bot.http.client.HttpClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -19,11 +20,11 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
 import static com.fasterxml.jackson.databind.DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT;
-import static io.github.aj8gh.bot.auth.util.AuthOperations.LOGIN;
-import static io.github.aj8gh.bot.domain.util.Headers.ACCEPT;
-import static io.github.aj8gh.bot.domain.util.Headers.CONTENT_TYPE;
-import static io.github.aj8gh.bot.domain.util.Headers.X_APPLICATION;
-import static io.github.aj8gh.bot.domain.util.Headers.X_IP;
+import static io.github.aj8gh.bot.http.operations.AuthOperations.LOGIN;
+import static io.github.aj8gh.bot.http.client.Headers.ACCEPT;
+import static io.github.aj8gh.bot.http.client.Headers.CONTENT_TYPE;
+import static io.github.aj8gh.bot.http.client.Headers.X_APPLICATION;
+import static io.github.aj8gh.bot.http.client.Headers.X_IP;
 
 @Slf4j
 @Configuration
@@ -64,8 +65,12 @@ class AuthConfig {
                 .queryParam(USERNAME_PARAM, username)
                 .queryParam(PASSWORD_PARAM, password)
                 .toUriString();
+        return new AuthClient(authHttpClient(), loginQueryString);
+    }
 
-        return new AuthClient(authRestTemplate(), loginQueryString);
+    @Bean
+    HttpClient authHttpClient() {
+        return new HttpClient(authRestTemplate());
     }
 
     @Bean
