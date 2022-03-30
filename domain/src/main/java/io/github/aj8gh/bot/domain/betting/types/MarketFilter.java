@@ -17,8 +17,6 @@ public class MarketFilter {
 
     private String textQuery;
 
-    private Set<String> exchangeIds;
-
     private Set<String> eventTypeIds;
 
     private Set<String> eventIds;

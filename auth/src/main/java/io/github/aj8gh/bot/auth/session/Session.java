@@ -24,7 +24,7 @@ public final class Session {
         this.updateTime = Instant.now();
     }
 
-    public Instant lastUpdated() {
+    public Instant getUpdateTime() {
         return updateTime == null ? createTime : updateTime;
     }
 }

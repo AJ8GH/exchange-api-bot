@@ -11,9 +11,9 @@ class SessionTest {
     @Test
     void keepAlive() {
         var session = new Session("token", "product");
-        assertEquals(session.lastUpdated(), session.getCreateTime());
+        assertEquals(session.getUpdateTime(), session.getCreateTime());
 
         session.keepAlive();
-        assertTrue(session.lastUpdated().isAfter(session.getCreateTime()));
+        assertTrue(session.getUpdateTime().isAfter(session.getCreateTime()));
     }
 }

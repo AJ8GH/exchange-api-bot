@@ -1,6 +1,7 @@
 package io.github.aj8gh.bot.auth.session;
 
 import io.github.aj8gh.bot.auth.client.AuthClient;
+import io.github.aj8gh.bot.domain.auth.enums.AuthStatus;
 import io.github.aj8gh.bot.domain.auth.types.AuthResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,9 +14,12 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import static io.github.aj8gh.bot.domain.auth.enums.AuthStatus.SUCCESS;
 import static org.awaitility.Awaitility.await;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.times;
@@ -28,7 +32,7 @@ class SessionSupplierTest {
     private static final String INITIAL_TOKEN = "initialToken";
     private static final String NEW_TOKEN = "newToken";
     private static final long SESSION_TTL = 1000;
-    private static final long KEEP_ALIVE_FREQ = 500;
+    private static final long KEEP_ALIVE_FREQ = 100;
 
     private SessionSupplier sessionSupplier;
     @Mock
@@ -116,7 +120,7 @@ class SessionSupplierTest {
     }
 
     @Test
-    void get_KeepAliveFrequencyReached_AuthClientKeepAliveInvoked() {
+    void get_KeepAliveFrequencyReached_SessionKeptAlive() {
         scheduler = Executors.newSingleThreadScheduledExecutor();
         sessionSupplier = new SessionSupplier(authClient, scheduler, clock);
         sessionSupplier.setKeepAliveFreq(KEEP_ALIVE_FREQ);

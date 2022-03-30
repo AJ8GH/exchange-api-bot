@@ -60,7 +60,7 @@ public class SessionSupplier implements Supplier<Session> {
     }
 
     private boolean isActive() {
-        return session != null && session.lastUpdated()
+        return session != null && session.getUpdateTime()
                 .isAfter(clock.instant().minusMillis(sessionTtl));
     }
 }

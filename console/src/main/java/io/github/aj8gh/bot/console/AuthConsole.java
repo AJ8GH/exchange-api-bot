@@ -2,6 +2,7 @@ package io.github.aj8gh.bot.console;
 
 import io.github.aj8gh.bot.auth.session.Session;
 import io.github.aj8gh.bot.auth.session.SessionSupplier;
+import io.github.aj8gh.bot.console.util.constants.Descriptions;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 
@@ -15,7 +16,7 @@ public class AuthConsole {
         this.sessionSupplier = sessionSupplier;
     }
 
-    @ShellMethod("Authenticates a new session")
+    @ShellMethod(Descriptions.LOGIN)
     public Session login() {
         return sessionSupplier.get();
     }

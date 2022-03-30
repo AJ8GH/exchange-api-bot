@@ -4,17 +4,37 @@ import io.github.aj8gh.bot.auth.session.SessionSupplier;
 import io.github.aj8gh.bot.betting.client.BettingClient;
 import io.github.aj8gh.bot.console.AuthConsole;
 import io.github.aj8gh.bot.console.BettingConsole;
-import io.github.aj8gh.bot.console.BotConsole;
-import org.springframework.context.ApplicationContext;
+import io.github.aj8gh.bot.console.FilterConsole;
+import io.github.aj8gh.bot.console.util.BotPromptProvider;
+import io.github.aj8gh.bot.console.util.formatting.ColourFormatter;
+import io.github.aj8gh.bot.console.util.RequestManager;
+import io.github.aj8gh.bot.console.util.ShellPrinter;
+import io.github.aj8gh.bot.console.util.formatting.TableFormatter;
+import io.github.aj8gh.bot.console.util.formatting.TableHeaders;
+
+import org.jline.terminal.Terminal;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 class ConsoleConfig {
+    private final Terminal terminal;
+    @Value("${shell.prompt}")
+    private String prompt;
+    @Value("${shell.out.info}")
+    private String infoColour;
+    @Value("${shell.out.success}")
+    private String successColour;
+    @Value("${shell.out.warning}")
+    private String warningColour;
+    @Value("${shell.out.error}")
+    private String errorColour;
+    @Value("${shell.view.width}")
+    private int shellWidth;
 
-    @Bean
-    BotConsole botConsole(ApplicationContext applicationContext) {
-        return new BotConsole(applicationContext);
+    ConsoleConfig(Terminal terminal) {
+        this.terminal = terminal;
     }
 
     @Bean
@@ -24,6 +44,47 @@ class ConsoleConfig {
 
     @Bean
     BettingConsole bettingConsole(BettingClient bettingClient) {
-        return new BettingConsole(bettingClient);
+        return new BettingConsole(
+                bettingClient, shellPrinter(), requestManager());
+    }
+
+    @Bean
+    FilterConsole filterConsole() {
+        return new FilterConsole(requestManager());
+    }
+
+    @Bean
+    BotPromptProvider botPromptProvider() {
+        return new BotPromptProvider(prompt);
+    }
+
+    @Bean
+    ShellPrinter shellPrinter() {
+        return new ShellPrinter(terminal, colourFormatter(), tableFormatter());
+    }
+
+    @Bean
+    RequestManager requestManager() {
+        return new RequestManager();
+    }
+
+    @Bean
+    ColourFormatter colourFormatter() {
+        var colourFormatter = new ColourFormatter();
+        colourFormatter.setInfoColour(infoColour);
+        colourFormatter.setSuccessColour(successColour);
+        colourFormatter.setWarningColour(warningColour);
+        colourFormatter.setErrorColour(errorColour);
+        return colourFormatter;
+    }
+
+    @Bean
+    TableFormatter tableFormatter() {
+        return new TableFormatter(tableHeaders(), shellWidth);
+    }
+
+    @Bean
+    TableHeaders tableHeaders() {
+        return new TableHeaders();
     }
 }
