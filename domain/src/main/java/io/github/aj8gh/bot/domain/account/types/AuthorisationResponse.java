@@ -11,8 +11,6 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AuthorisationResponse {
-    @NonNull
-    private String authorisationCode;
-    @NonNull
-    private String redirectUrl;
+    @NonNull private String authorisationCode;
+    @NonNull private String redirectUrl;
 }

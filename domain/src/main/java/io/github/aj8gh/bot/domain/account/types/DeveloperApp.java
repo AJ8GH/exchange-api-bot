@@ -13,10 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DeveloperApp {
-    @NonNull
-    private String appName;
-    @NonNull
-    private Long appId;
-    @NonNull
-    private List<DeveloperAppVersion> appVersions;
+    @NonNull private String appName;
+    @NonNull private Long appId;
+    @NonNull private List<DeveloperAppVersion> appVersions;
 }

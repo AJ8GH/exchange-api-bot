@@ -14,16 +14,10 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Match {
-
+    @NonNull private Side side;
+    @NonNull private Double price;
+    @NonNull private Double size;
     private String betId;
-
     private String matchId;
-    @NonNull
-    private Side side;
-    @NonNull
-    private Double price;
-    @NonNull
-    private Double size;
-
     private Date matchDate;
 }

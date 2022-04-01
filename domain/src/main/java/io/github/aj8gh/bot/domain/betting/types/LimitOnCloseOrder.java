@@ -11,8 +11,6 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LimitOnCloseOrder {
-    @NonNull
-    private Double liability;
-    @NonNull
-    private Double price;
+    @NonNull private Double liability;
+    @NonNull private Double price;
 }

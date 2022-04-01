@@ -11,10 +11,7 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RunnerId {
-    @NonNull
-    private String marketId;
-    @NonNull
-    private Long selectionId;
-
+    @NonNull private String marketId;
+    @NonNull private Long selectionId;
     private Double handicap;
 }

@@ -13,10 +13,7 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UpdateInstructionReport {
-    @NonNull
-    private InstructionReportStatus status;
-
+    @NonNull private InstructionReportStatus status;
+    @NonNull private UpdateInstruction instruction;
     private InstructionReportErrorCode errorCode;
-    @NonNull
-    private UpdateInstruction instruction;
 }

@@ -12,14 +12,9 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 public class VendorAccessTokenInfo {
-    @NonNull
-    private String accessToken;
-    @NonNull
-    private TokenType tokenType;
-    @NonNull
-    private Long expiresIn;
-    @NonNull
-    private String refreshToken;
-    @NonNull
-    private ApplicationSubscription applicationSubscription;
+    @NonNull private String accessToken;
+    @NonNull private TokenType tokenType;
+    @NonNull private Long expiresIn;
+    @NonNull private String refreshToken;
+    @NonNull private ApplicationSubscription applicationSubscription;
 }

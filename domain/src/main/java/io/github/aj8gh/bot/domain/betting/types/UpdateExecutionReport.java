@@ -15,14 +15,9 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UpdateExecutionReport {
-
+    @NonNull private ExecutionReportStatus status;
     private String customerRef;
-    @NonNull
-    private ExecutionReportStatus status;
-
     private ExecutionReportErrorCode errorCode;
-
     private String marketId;
-
     private List<UpdateInstructionReport> instructionReports;
 }

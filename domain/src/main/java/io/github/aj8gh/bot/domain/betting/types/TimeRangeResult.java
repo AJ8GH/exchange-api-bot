@@ -10,8 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TimeRangeResult {
-
     private TimeRange timeRange;
-
     private Integer marketCount;
 }

@@ -14,22 +14,13 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MarketCatalogue {
-    @NonNull
-    private String marketId;
-    @NonNull
-    private String marketName;
-
+    @NonNull private String marketId;
+    @NonNull private String marketName;
     private Date marketStartTime;
-
     private MarketDescription description;
-
     private Double totalMatched;
-
     private List<RunnerCatalog> runners;
-
     private EventType eventType;
-
-    private Competition competition;
-
+    private Competition competition = new Competition();
     private Event event;
 }

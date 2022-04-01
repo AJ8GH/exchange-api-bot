@@ -13,8 +13,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AccountStatementReport {
-    @NonNull
-    private List<StatementItem> accountStatement;
-    @NonNull
-    private Boolean moreAvailable;
+    @NonNull private List<StatementItem> accountStatement;
+    @NonNull private Boolean moreAvailable;
 }

@@ -11,10 +11,7 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 public class VendorDetails {
-    @NonNull
-    private Long appVersionId;
-    @NonNull
-    private String vendorName;
-
+    @NonNull private Long appVersionId;
+    @NonNull private String vendorName;
     private String redirectUrl;
 }

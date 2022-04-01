@@ -13,8 +13,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ClearedOrderSummaryReport {
-    @NonNull
-    private List<ClearedOrderSummary> clearedOrders;
-    @NonNull
-    private Boolean moreAvailable;
+    @NonNull private List<ClearedOrderSummary> clearedOrders;
+    @NonNull private Boolean moreAvailable;
 }

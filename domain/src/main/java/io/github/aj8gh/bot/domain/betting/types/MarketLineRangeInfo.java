@@ -11,12 +11,8 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MarketLineRangeInfo {
-    @NonNull
-    private Double maxUnitValue;
-    @NonNull
-    private Double minUnitValue;
-    @NonNull
-    private Double interval;
-    @NonNull
-    private String marketUnit;
+    @NonNull private Double maxUnitValue;
+    @NonNull private Double minUnitValue;
+    @NonNull private Double interval;
+    @NonNull private String marketUnit;
 }

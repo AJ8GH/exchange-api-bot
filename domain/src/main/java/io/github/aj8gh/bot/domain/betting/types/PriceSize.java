@@ -11,8 +11,6 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PriceSize {
-    @NonNull
-    private Double price;
-    @NonNull
-    private Double size;
+    @NonNull private Double price;
+    @NonNull private Double size;
 }

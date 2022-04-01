@@ -11,8 +11,6 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ReplaceInstruction {
-    @NonNull
-    private String betId;
-    @NonNull
-    private Double newPrice;
+    @NonNull private String betId;
+    @NonNull private Double newPrice;
 }

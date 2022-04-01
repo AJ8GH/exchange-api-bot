@@ -10,8 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class VenueResult {
-
     private String venue;
-
     private Integer marketCount;
 }

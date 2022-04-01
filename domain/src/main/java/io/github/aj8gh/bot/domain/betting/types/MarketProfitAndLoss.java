@@ -12,10 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MarketProfitAndLoss {
-
     private String marketId;
-
     private Double commissionApplied;
-
     private List<RunnerProfitAndLoss> profitAndLosses;
 }

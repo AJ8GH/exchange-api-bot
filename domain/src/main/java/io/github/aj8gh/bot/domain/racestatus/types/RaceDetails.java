@@ -15,16 +15,10 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RaceDetails {
-    @NonNull
-    private String meetingId;
-    @NonNull
-    private String raceId;
-    @NonNull
-    private RaceStatus raceStatus;
-    @NonNull
-    private Date lastUpdated;
-    @NonNull
-    private Long sequence;
-    @NonNull
-    private ResponseCode responseCode;
+    @NonNull private String meetingId;
+    @NonNull private String raceId;
+    @NonNull private RaceStatus raceStatus;
+    @NonNull private Date lastUpdated;
+    @NonNull private Long sequence;
+    @NonNull private ResponseCode responseCode;
 }

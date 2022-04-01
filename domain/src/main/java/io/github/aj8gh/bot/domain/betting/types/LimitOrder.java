@@ -14,18 +14,11 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LimitOrder {
-    @NonNull
-    private Double size;
-    @NonNull
-    private Double price;
-    @NonNull
-    private PersistenceType persistenceType;
-
+    @NonNull private Double size;
+    @NonNull private Double price;
+    @NonNull private PersistenceType persistenceType;
     private TimeInForce timeInForce;
-
     private Double minFillSize;
-
     private BetTargetType betTargetType;
-
     private Double betTargetSize;
 }

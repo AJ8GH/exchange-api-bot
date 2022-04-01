@@ -16,28 +16,16 @@ import java.util.Map;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Runner {
-    @NonNull
-    private Long selectionId;
-    @NonNull
-    private Double handicap;
-    @NonNull
-    private RunnerStatus status;
-
+    @NonNull private Long selectionId;
+    @NonNull private Double handicap;
+    @NonNull private RunnerStatus status;
     private Double adjustmentFactor;
-
     private Double lastPriceTraded;
-
     private Double totalMatched;
-
     private Date removalDate;
-
-    private StartingPrices sp;
-
-    private ExchangePrices ex;
-
+    private StartingPrices sp = new StartingPrices();
+    private ExchangePrices ex = new ExchangePrices();
     private List<Order> orders;
-
     private List<Match> matches;
-
     private Map<String,List<Match>> matchesByStrategy;
 }

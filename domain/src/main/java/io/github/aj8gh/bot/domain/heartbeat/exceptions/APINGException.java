@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @Builder
 public class APINGException extends RuntimeException {
-
     private final ErrorCode errorCode;
     private final String errorDetails;
     private final String requestUUID;

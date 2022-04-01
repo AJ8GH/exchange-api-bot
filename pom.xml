@@ -49,7 +49,7 @@
         <jacoco.haltOnFailure>true</jacoco.haltOnFailure>
         <jacoco.phase>test</jacoco.phase>
         <jacoco.target>0.8</jacoco.target>
-        <java.version>11</java.version>
+        <java.version>17</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

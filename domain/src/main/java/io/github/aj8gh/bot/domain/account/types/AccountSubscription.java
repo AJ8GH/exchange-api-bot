@@ -13,10 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AccountSubscription {
-    @NonNull
-    private List<SubscriptionTokenInfo> subscriptionTokens;
-
+    @NonNull private List<SubscriptionTokenInfo> subscriptionTokens;
     private String applicationName;
-
     private String applicationVersionId;
 }

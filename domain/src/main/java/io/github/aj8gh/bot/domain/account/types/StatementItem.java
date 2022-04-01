@@ -15,18 +15,11 @@ import java.util.Map;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StatementItem {
-
+    @NonNull private Date itemDate;
     private String refId;
-    @NonNull
-    private Date itemDate;
-
     private Double amount;
-
     private Double balance;
-
     private ItemClass itemClass;
-
     private Map<String, String> itemClassData;
-
     private StatementLegacyData legacyData;
 }

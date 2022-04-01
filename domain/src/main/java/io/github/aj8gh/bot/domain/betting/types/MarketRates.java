@@ -11,8 +11,6 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MarketRates {
-    @NonNull
-    private Double marketBaseRate;
-    @NonNull
-    private Boolean discountAllowed;
+    @NonNull private Double marketBaseRate;
+    @NonNull private Boolean discountAllowed;
 }

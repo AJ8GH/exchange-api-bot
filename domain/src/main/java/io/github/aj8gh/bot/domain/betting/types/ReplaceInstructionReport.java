@@ -13,12 +13,8 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ReplaceInstructionReport {
-    @NonNull
-    private InstructionReportStatus status;
-
+    @NonNull private InstructionReportStatus status;
     private InstructionReportErrorCode errorCode;
-
     private CancelInstructionReport cancelInstructionReport;
-
     private PlaceInstructionReport placeInstructionReport;
 }

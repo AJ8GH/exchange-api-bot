@@ -16,20 +16,12 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PlaceInstructionReport {
-    @NonNull
-    private InstructionReportStatus status;
-
+    @NonNull private InstructionReportStatus status;
+    @NonNull private PlaceInstruction instruction;
     private InstructionReportErrorCode errorCode;
-
     private OrderStatus orderStatus;
-    @NonNull
-    private PlaceInstruction instruction;
-
     private String betId;
-
     private Date placedDate;
-
     private Double averagePriceMatched;
-
     private Double sizeMatched;
 }

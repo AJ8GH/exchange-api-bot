@@ -13,22 +13,13 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ApplicationSubscription {
-
     private String subscriptionToken;
-
     private Date expiryDateTime;
-
     private Date expiredDateTime;
-
     private Date createdDateTime;
-
     private Date activationDateTime;
-
     private Date cancellationDateTime;
-
     private SubscriptionStatus subscriptionStatus;
-
     private String clientReference;
-
     private String vendorClientId;
 }

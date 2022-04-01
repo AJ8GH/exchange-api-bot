@@ -12,16 +12,10 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Event {
-
     private String id;
-
     private String name;
-
     private String countryCode;
-
     private String timezone;
-
     private String venue;
-
     private Date openDate;
 }

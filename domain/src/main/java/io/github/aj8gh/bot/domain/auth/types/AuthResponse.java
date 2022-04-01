@@ -12,12 +12,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AuthResponse {
-
     private String token;
-
     private String product;
-
     private AuthStatus status;
-
     private AuthErrorCode error;
 }

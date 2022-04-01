@@ -8,7 +8,6 @@ import java.util.Map;
 @Getter
 @Builder
 public class JSONRPCException extends RuntimeException {
-
     private static final Map<Integer, String> EXCEPTION_MAP = Map.of(
             -32700, "Invalid JSON was received by the server. An error occurred on the server while parsing the JSON text.",
             -32603, "Internal JSON-RPC error",

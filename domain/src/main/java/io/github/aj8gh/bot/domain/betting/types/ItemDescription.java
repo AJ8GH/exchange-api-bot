@@ -12,20 +12,12 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ItemDescription {
-
     private String eventTypeDesc;
-
     private String eventDesc;
-
     private String marketDesc;
-
     private String marketType;
-
     private Date marketStartTime;
-
     private String runnerDesc;
-
     private Integer numberOfWinners;
-
     private Double eachWayDivisor;
 }

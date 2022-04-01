@@ -4,10 +4,11 @@ import io.github.aj8gh.bot.auth.session.SessionSupplier;
 import io.github.aj8gh.bot.betting.client.BettingClient;
 import io.github.aj8gh.bot.console.AuthConsole;
 import io.github.aj8gh.bot.console.BettingConsole;
-import io.github.aj8gh.bot.console.FilterConsole;
+import io.github.aj8gh.bot.console.RequestConsole;
 import io.github.aj8gh.bot.console.util.BotPromptProvider;
+import io.github.aj8gh.bot.console.util.MarketCache;
 import io.github.aj8gh.bot.console.util.formatting.ColourFormatter;
-import io.github.aj8gh.bot.console.util.RequestManager;
+import io.github.aj8gh.bot.console.util.RequestBuilder;
 import io.github.aj8gh.bot.console.util.ShellPrinter;
 import io.github.aj8gh.bot.console.util.formatting.TableFormatter;
 import io.github.aj8gh.bot.console.util.formatting.TableHeaders;
@@ -45,12 +46,12 @@ class ConsoleConfig {
     @Bean
     BettingConsole bettingConsole(BettingClient bettingClient) {
         return new BettingConsole(
-                bettingClient, shellPrinter(), requestManager());
+                bettingClient, requestBuilder(), marketCache(), shellPrinter());
     }
 
     @Bean
-    FilterConsole filterConsole() {
-        return new FilterConsole(requestManager());
+    RequestConsole filterConsole() {
+        return new RequestConsole(requestBuilder());
     }
 
     @Bean
@@ -64,8 +65,8 @@ class ConsoleConfig {
     }
 
     @Bean
-    RequestManager requestManager() {
-        return new RequestManager();
+    RequestBuilder requestBuilder() {
+        return new RequestBuilder();
     }
 
     @Bean
@@ -86,5 +87,10 @@ class ConsoleConfig {
     @Bean
     TableHeaders tableHeaders() {
         return new TableHeaders();
+    }
+
+    @Bean
+    MarketCache marketCache() {
+        return new MarketCache();
     }
 }

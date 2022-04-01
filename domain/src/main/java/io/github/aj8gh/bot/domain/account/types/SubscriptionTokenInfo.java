@@ -14,16 +14,10 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SubscriptionTokenInfo {
-    @NonNull
-    private String subscriptionToken;
-
+    @NonNull private String subscriptionToken;
     private Date activatedDateTime;
-
     private Date expiryDateTime;
-
     private Date expiredDateTime;
-
     private Date cancellationDateTime;
-
     private SubscriptionStatus subscriptionStatus;
 }

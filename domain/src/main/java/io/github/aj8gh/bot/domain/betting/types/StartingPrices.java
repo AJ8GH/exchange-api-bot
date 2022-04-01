@@ -12,14 +12,9 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StartingPrices {
-
     private Double nearPrice;
-
     private Double farPrice;
-
     private List<PriceSize> backStakeTaken;
-
     private List<PriceSize> layLiabilityTaken;
-
     private Double actualSP;
 }

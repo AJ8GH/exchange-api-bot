@@ -14,20 +14,12 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SubscriptionHistory {
-    @NonNull
-    private String subscriptionToken;
-
+    @NonNull private String subscriptionToken;
     private Date expiryDateTime;
-
     private Date expiredDateTime;
-
     private Date createdDateTime;
-
     private Date activationDateTime;
-
     private Date cancellationDateTime;
-
     private SubscriptionStatus subscriptionStatus;
-
     private String clientReference;
 }

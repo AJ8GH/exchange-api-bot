@@ -10,8 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CurrencyRate {
-
     private String currencyCode;
-
     private Double rate;
 }

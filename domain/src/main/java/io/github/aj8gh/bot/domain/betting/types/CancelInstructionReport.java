@@ -15,15 +15,10 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CancelInstructionReport {
-    @NonNull
-    private InstructionReportStatus status;
-
+    @NonNull private InstructionReportStatus status;
+    @NonNull private Double sizeCancelled;
     private InstructionReportErrorCode errorCode;
-
     private CancelInstruction instruction;
-    @NonNull
-    private Double sizeCancelled;
-
     private Date cancelledDate;
 
 }

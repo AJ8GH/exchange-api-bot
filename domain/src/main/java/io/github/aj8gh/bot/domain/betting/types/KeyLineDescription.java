@@ -13,6 +13,5 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class KeyLineDescription {
-    @NonNull
-    private List<KeyLineSelection> keyLine;
+    @NonNull private List<KeyLineSelection> keyLine;
 }

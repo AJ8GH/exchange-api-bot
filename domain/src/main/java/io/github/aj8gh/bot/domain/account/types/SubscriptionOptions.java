@@ -10,10 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SubscriptionOptions {
-
     private Integer subscriptionLength;
-
     private String subscriptionToken;
-
     private String clientReference;
 }

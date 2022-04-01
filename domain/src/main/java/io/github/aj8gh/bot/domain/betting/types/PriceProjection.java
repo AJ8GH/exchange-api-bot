@@ -13,12 +13,8 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PriceProjection {
-
     private Set<PriceData> priceData;
-
     private ExBestOffersOverrides exBestOffersOverrides;
-
     private Boolean virtualise;
-
     private Boolean rolloverStakes;
 }

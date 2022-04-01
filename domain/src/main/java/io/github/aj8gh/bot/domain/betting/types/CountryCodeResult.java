@@ -10,8 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CountryCodeResult {
-
     private String countryCode;
-
     private Integer marketCount;
 }

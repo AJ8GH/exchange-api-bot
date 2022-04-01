@@ -10,8 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MarketTypeResult {
-
     private String marketType;
-
     private Integer marketCount;
 }

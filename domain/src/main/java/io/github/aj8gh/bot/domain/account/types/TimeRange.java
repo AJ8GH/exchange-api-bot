@@ -12,8 +12,6 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TimeRange {
-
     private Date from;
-
     private Date to;
 }
