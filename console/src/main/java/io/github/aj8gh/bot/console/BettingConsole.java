@@ -3,7 +3,7 @@ package io.github.aj8gh.bot.console;
 import io.github.aj8gh.bot.betting.client.BettingClient;
 import io.github.aj8gh.bot.console.util.MarketCache;
 import io.github.aj8gh.bot.console.util.constants.Messages;
-import io.github.aj8gh.bot.console.util.RequestBuilder;
+import io.github.aj8gh.bot.betting.client.RequestBuilder;
 import io.github.aj8gh.bot.console.util.ShellPrinter;
 import io.github.aj8gh.bot.console.util.constants.Descriptions;
 import io.github.aj8gh.bot.domain.betting.enums.MarketProjection;
@@ -27,6 +27,7 @@ import static org.springframework.shell.standard.ShellOption.NULL;
 @Slf4j
 @ShellComponent
 public class BettingConsole {
+    // TODO: move client behind a cache layer to manage cached data & api calls
     private final BettingClient bettingClient;
     private final RequestBuilder requestBuilder;
     private final MarketCache marketCache;

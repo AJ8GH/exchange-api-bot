@@ -1,4 +1,4 @@
-package io.github.aj8gh.bot.console.util;
+package io.github.aj8gh.bot.betting.client;
 
 import io.github.aj8gh.bot.domain.betting.enums.MarketProjection;
 import io.github.aj8gh.bot.domain.betting.enums.MarketSort;
@@ -22,7 +22,7 @@ public class RequestBuilder {
     private static final MarketSort DEFAULT_MARKET_SORT = FIRST_TO_START;
     private static final Integer DEFAULT_MAX_RESULTS = 50;
 
-    private MarketFilter marketFilter = new MarketFilter();
+    private MarketFilter marketFilter = MarketFilter.builder().build();
     private TimeGranularity timeGranularity = DEFAULT_GRANULARITY;
     private Set<MarketProjection> marketProjection = DEFAULT_MARKET_PROJECTION;
     private MarketSort marketSort = DEFAULT_MARKET_SORT;
@@ -61,7 +61,7 @@ public class RequestBuilder {
     }
 
     public void clearMarketFilter() {
-        this.marketFilter = new MarketFilter();
+        this.marketFilter = MarketFilter.builder().build();
     }
 
     public void setGranularity(TimeGranularity timeGranularity) {

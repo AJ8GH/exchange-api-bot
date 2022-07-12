@@ -1,6 +1,6 @@
 package io.github.aj8gh.bot.console;
 
-import io.github.aj8gh.bot.console.util.RequestBuilder;
+import io.github.aj8gh.bot.betting.client.RequestBuilder;
 import io.github.aj8gh.bot.console.util.constants.Descriptions;
 import io.github.aj8gh.bot.domain.betting.enums.MarketBettingType;
 import io.github.aj8gh.bot.domain.betting.enums.OrderStatus;

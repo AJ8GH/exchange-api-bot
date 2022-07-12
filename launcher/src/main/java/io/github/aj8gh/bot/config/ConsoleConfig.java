@@ -8,7 +8,7 @@ import io.github.aj8gh.bot.console.RequestConsole;
 import io.github.aj8gh.bot.console.util.BotPromptProvider;
 import io.github.aj8gh.bot.console.util.MarketCache;
 import io.github.aj8gh.bot.console.util.formatting.ColourFormatter;
-import io.github.aj8gh.bot.console.util.RequestBuilder;
+import io.github.aj8gh.bot.betting.client.RequestBuilder;
 import io.github.aj8gh.bot.console.util.ShellPrinter;
 import io.github.aj8gh.bot.console.util.formatting.TableFormatter;
 import io.github.aj8gh.bot.console.util.formatting.TableHeaders;
@@ -45,8 +45,10 @@ class ConsoleConfig {
 
     @Bean
     BettingConsole bettingConsole(BettingClient bettingClient) {
+        // TODO: move client behind a cache layer to manage cached data & api calls
         return new BettingConsole(
                 bettingClient, requestBuilder(), marketCache(), shellPrinter());
+        // return new BettingConsole(bettingCache(), requestBuilder(), shellPrinter());
     }
 
     @Bean
