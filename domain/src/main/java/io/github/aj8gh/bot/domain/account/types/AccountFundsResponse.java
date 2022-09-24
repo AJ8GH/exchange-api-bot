@@ -10,10 +10,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AccountFundsResponse {
-    private Double availableToBetBalance;
-    private Double exposure;
-    private Double retainedCommission;
-    private Double exposureLimit;
-    private Double discountRate;
-    private Integer pointsBalance;
+
+  private Double availableToBetBalance;
+  private Double exposure;
+  private Double retainedCommission;
+  private Double exposureLimit;
+  private Double discountRate;
+  private Integer pointsBalance;
 }

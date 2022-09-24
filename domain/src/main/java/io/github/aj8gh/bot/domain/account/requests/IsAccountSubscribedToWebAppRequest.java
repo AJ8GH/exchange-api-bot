@@ -7,6 +7,7 @@ import lombok.Value;
 @Value
 @Builder
 public class IsAccountSubscribedToWebAppRequest {
-    @NonNull
-    String vendorId;
+
+  @NonNull
+  String vendorId;
 }

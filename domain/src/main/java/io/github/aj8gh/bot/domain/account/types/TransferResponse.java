@@ -11,5 +11,7 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TransferResponse {
-    @NonNull private String transactionId;
+
+  @NonNull
+  private String transactionId;
 }

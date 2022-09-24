@@ -12,6 +12,9 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AffiliateRelation {
-    @NonNull private String vendorClientId;
-    @NonNull private AffiliateRelationStatus status;
+
+  @NonNull
+  private String vendorClientId;
+  @NonNull
+  private AffiliateRelationStatus status;
 }

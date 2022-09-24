@@ -7,7 +7,8 @@ import lombok.Value;
 @Value
 @Builder
 public class TransferFundsRequest {
-    Wallet from;
-    Wallet to;
-    Double amount;
+
+  Wallet from;
+  Wallet to;
+  Double amount;
 }

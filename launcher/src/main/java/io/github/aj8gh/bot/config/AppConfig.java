@@ -8,9 +8,9 @@ import org.springframework.context.annotation.Primary;
 @Configuration
 class AppConfig {
 
-    @Bean
-    @Primary
-    ObjectMapper objectMapper() {
-        return new ObjectMapper();
-    }
+  @Bean
+  @Primary
+  ObjectMapper objectMapper() {
+    return new ObjectMapper();
+  }
 }

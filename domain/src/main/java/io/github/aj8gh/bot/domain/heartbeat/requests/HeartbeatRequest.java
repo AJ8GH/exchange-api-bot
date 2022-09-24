@@ -7,5 +7,6 @@ import lombok.Value;
 @Value
 @Builder
 public class HeartbeatRequest {
-    @NonNull Integer preferredTimeoutSeconds;
+
+  @NonNull Integer preferredTimeoutSeconds;
 }

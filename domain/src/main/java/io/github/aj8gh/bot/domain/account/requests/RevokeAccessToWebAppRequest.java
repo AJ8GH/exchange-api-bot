@@ -7,5 +7,6 @@ import lombok.Value;
 @Value
 @Builder
 public class RevokeAccessToWebAppRequest {
-    @NonNull Long vendorId;
+
+  @NonNull Long vendorId;
 }

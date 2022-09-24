@@ -10,8 +10,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RunnerProfitAndLoss {
-    private Long selectionId;
-    private Double ifWin;
-    private Double ifLose;
-    private Double ifPlace;
+
+  private Long selectionId;
+  private Double ifWin;
+  private Double ifLose;
+  private Double ifPlace;
 }

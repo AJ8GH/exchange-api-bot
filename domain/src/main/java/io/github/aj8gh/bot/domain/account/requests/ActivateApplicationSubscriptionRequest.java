@@ -6,5 +6,6 @@ import lombok.Value;
 @Value
 @Builder
 public class ActivateApplicationSubscriptionRequest {
-    String subscriptionToken;
+
+  String subscriptionToken;
 }

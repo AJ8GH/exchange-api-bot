@@ -11,6 +11,9 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 public class KeyLineSelection {
-    @NonNull private Long selectionId;
-    @NonNull private Double handicap;
+
+  @NonNull
+  private Long selectionId;
+  @NonNull
+  private Double handicap;
 }

@@ -1,7 +1,16 @@
 package io.github.aj8gh.bot.http.client;
 
+import static io.github.aj8gh.bot.http.operations.BettingOperations.LIST_EVENT_TYPES;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static org.mockito.MockitoAnnotations.openMocks;
+
 import io.github.aj8gh.bot.domain.betting.types.EventTypeResult;
 import io.github.aj8gh.bot.domain.betting.types.MarketFilter;
+import java.util.List;
+import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -11,64 +20,56 @@ import org.springframework.http.HttpEntity;
 import org.springframework.web.client.RestClientResponseException;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.List;
-import java.util.Map;
-
-import static io.github.aj8gh.bot.http.operations.BettingOperations.LIST_EVENT_TYPES;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-import static org.mockito.MockitoAnnotations.openMocks;
-
 class HttpClientTest {
-    private HttpClient httpClient;
-    @Mock
-    private RestTemplate restTemplate;
 
-    @BeforeEach
-    void setUp() {
-        openMocks(this);
-        httpClient = new HttpClient(restTemplate);
-    }
+  private HttpClient httpClient;
+  @Mock
+  private RestTemplate restTemplate;
 
-    @Test
-    void listEventTypes_Success_ReturnsListOfResults() {
-        var requestBody = MarketFilter.builder().build();
-        var request = new HttpEntity<>(Map.of("filter", requestBody));
-        var expectedResponse = new EventTypeResult[] { new EventTypeResult() };
+  private static List<Exception> exceptionProvider() {
+    return List.of(
+        new RuntimeException("Test RuntimeException"),
+        new RestClientResponseException(
+            "Test RestException", 500, "Error", null, null, null)
+    );
+  }
 
-        when(restTemplate.postForObject(
-                LIST_EVENT_TYPES.path(), request, EventTypeResult[].class))
-                .thenReturn(expectedResponse);
+  @BeforeEach
+  void setUp() {
+    openMocks(this);
+    httpClient = new HttpClient(restTemplate);
+  }
 
-        var response = httpClient.post(
-                LIST_EVENT_TYPES.path(), request, EventTypeResult[].class);
+  @Test
+  void listEventTypes_Success_ReturnsListOfResults() {
+    var requestBody = MarketFilter.builder().build();
+    var request = new HttpEntity<>(Map.of("filter", requestBody));
+    var expectedResponse = new EventTypeResult[]{new EventTypeResult()};
 
-        verify(restTemplate).postForObject(
-                LIST_EVENT_TYPES.path(), request, EventTypeResult[].class);
-        assertTrue(response.isPresent());
-        assertEquals(expectedResponse, response.get());
-    }
+    when(restTemplate.postForObject(
+        LIST_EVENT_TYPES.path(), request, EventTypeResult[].class))
+        .thenReturn(expectedResponse);
 
-    @ParameterizedTest
-    @MethodSource(value = "exceptionProvider")
-    void listEventTypes_ExceptionThrown_ReturnsEmptyList(Exception exception) {
-        var requestBody = MarketFilter.builder().build();
-        var request = new HttpEntity<>(Map.of("filter", requestBody));
+    var response = httpClient.post(
+        LIST_EVENT_TYPES.path(), request, EventTypeResult[].class);
 
-        when(restTemplate.postForObject(LIST_EVENT_TYPES.path(), request, EventTypeResult[].class))
-                .thenThrow(exception);
+    verify(restTemplate).postForObject(
+        LIST_EVENT_TYPES.path(), request, EventTypeResult[].class);
+    assertTrue(response.isPresent());
+    assertEquals(expectedResponse, response.get());
+  }
 
-        var response = httpClient.post(
-                LIST_EVENT_TYPES.path(), request, EventTypeResult[].class);
-        assertTrue(response.isEmpty());
-    }
+  @ParameterizedTest
+  @MethodSource(value = "exceptionProvider")
+  void listEventTypes_ExceptionThrown_ReturnsEmptyList(Exception exception) {
+    var requestBody = MarketFilter.builder().build();
+    var request = new HttpEntity<>(Map.of("filter", requestBody));
 
-    private static List<Exception> exceptionProvider() {
-        return List.of(
-                new RuntimeException("Test RuntimeException"),
-                new RestClientResponseException(
-                        "Test RestException", 500, "Error", null, null, null)
-        );
-    }
+    when(restTemplate.postForObject(LIST_EVENT_TYPES.path(), request, EventTypeResult[].class))
+        .thenThrow(exception);
+
+    var response = httpClient.post(
+        LIST_EVENT_TYPES.path(), request, EventTypeResult[].class);
+    assertTrue(response.isEmpty());
+  }
 }

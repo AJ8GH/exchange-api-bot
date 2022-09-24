@@ -8,9 +8,10 @@ import lombok.Value;
 @Value
 @Builder
 public class TokenRequest {
-    @NonNull String client_id;
-    @NonNull GrantType grant_type;
-    @NonNull String client_secret;
-    String refresh_token;
-    String code;
+
+  @NonNull String client_id;
+  @NonNull GrantType grant_type;
+  @NonNull String client_secret;
+  String refresh_token;
+  String code;
 }

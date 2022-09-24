@@ -7,5 +7,6 @@ import lombok.Value;
 @Value
 @Builder
 public class ListApplicationSubscriptionTokensRequest {
-    SubscriptionStatus subscriptionStatus;
+
+  SubscriptionStatus subscriptionStatus;
 }

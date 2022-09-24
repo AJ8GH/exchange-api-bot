@@ -6,6 +6,7 @@ import lombok.Value;
 @Value
 @Builder
 public class UpdateApplicationSubscriptionRequest {
-    String vendorClientId;
-    Integer subscriptionLength;
+
+  String vendorClientId;
+  Integer subscriptionLength;
 }

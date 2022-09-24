@@ -1,23 +1,23 @@
 package io.github.aj8gh.bot.http.operations;
 
 public enum AuthOperations {
-    LOGIN("login"),
-    LOGOUT("logout"),
-    KEEP_ALIVE("keepAlive");
+  LOGIN("login"),
+  LOGOUT("logout"),
+  KEEP_ALIVE("keepAlive");
 
-    private static final String PATH_DELIMITER = "/";
+  private static final String PATH_DELIMITER = "/";
 
-    private final String operation;
+  private final String operation;
 
-    AuthOperations(String operation) {
-        this.operation = operation;
-    }
+  AuthOperations(String operation) {
+    this.operation = operation;
+  }
 
-    public String path() {
-        return PATH_DELIMITER + operation;
-    }
+  public String path() {
+    return PATH_DELIMITER + operation;
+  }
 
-    public String operation() {
-        return operation;
-    }
+  public String operation() {
+    return operation;
+  }
 }

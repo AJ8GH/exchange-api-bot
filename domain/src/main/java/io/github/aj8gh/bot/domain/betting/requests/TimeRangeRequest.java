@@ -9,6 +9,7 @@ import lombok.Value;
 @Value
 @Builder
 public class TimeRangeRequest {
-    @NonNull MarketFilter filter;
-    @NonNull TimeGranularity granularity;
+
+  @NonNull MarketFilter filter;
+  @NonNull TimeGranularity granularity;
 }

@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum RaceStatusOperations {
-    LIST_RACE_DETAILS("listRaceDetails");
+  LIST_RACE_DETAILS("listRaceDetails");
 
-    private final String value;
+  private final String value;
 }

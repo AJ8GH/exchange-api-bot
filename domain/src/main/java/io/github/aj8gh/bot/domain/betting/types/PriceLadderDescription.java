@@ -12,5 +12,7 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PriceLadderDescription {
-    @NonNull private PriceLadderType type;
+
+  @NonNull
+  private PriceLadderType type;
 }

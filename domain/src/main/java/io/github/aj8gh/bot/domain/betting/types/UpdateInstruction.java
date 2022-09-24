@@ -12,6 +12,9 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UpdateInstruction {
-    @NonNull private String betId;
-    @NonNull private PersistenceType newPersistenceType;
+
+  @NonNull
+  private String betId;
+  @NonNull
+  private PersistenceType newPersistenceType;
 }

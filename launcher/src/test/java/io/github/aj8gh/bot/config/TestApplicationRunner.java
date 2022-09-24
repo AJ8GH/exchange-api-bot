@@ -12,17 +12,18 @@ import org.springframework.test.context.ActiveProfiles;
 @TestConfiguration
 @ActiveProfiles("test")
 public class TestApplicationRunner implements ApplicationRunner {
-    private static final Logger LOG = LoggerFactory.getLogger(TestApplicationRunner.class);
 
-    @MockBean
-    InteractiveShellRunner interactiveShellRunner;
+  private static final Logger LOG = LoggerFactory.getLogger(TestApplicationRunner.class);
 
-    public TestApplicationRunner() {
-        LOG.info("*** Test Application Runner started! ***");
-    }
+  @MockBean
+  InteractiveShellRunner interactiveShellRunner;
 
-    @Override
-    public void run(ApplicationArguments args) {
-        // Do nothing
-    }
+  public TestApplicationRunner() {
+    LOG.info("*** Test Application Runner started! ***");
+  }
+
+  @Override
+  public void run(ApplicationArguments args) {
+    // Do nothing
+  }
 }

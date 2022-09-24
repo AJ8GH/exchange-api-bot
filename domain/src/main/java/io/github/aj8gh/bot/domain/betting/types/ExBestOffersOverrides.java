@@ -11,9 +11,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ExBestOffersOverrides {
-    private Integer bestPricesDepth;
-    private RollupModel rollupModel;
-    private Integer rollupLimit;
-    private Double rollupLiabilityThreshold;
-    private Integer rollupLiabilityFactor;
+
+  private Integer bestPricesDepth;
+  private RollupModel rollupModel;
+  private Integer rollupLimit;
+  private Double rollupLiabilityThreshold;
+  private Integer rollupLiabilityFactor;
 }

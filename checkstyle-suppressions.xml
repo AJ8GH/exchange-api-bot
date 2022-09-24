@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<!DOCTYPE suppressions PUBLIC
+  "-//Checkstyle//DTD SuppressionFilter Configuration 1.2//EN"
+  "https://checkstyle.org/dtds/suppressions_1_2.dtd">
+
+<suppressions>
+  <suppress
+    checks="SummaryJavadoc|MissingJavadocType|MissingJavadocMethod|NonEmptyAtcClauseDescription|JavadocParagraph|JavadocPackage|JavadocVariable"
+    files="."/>
+  <suppress
+    checks="LineLength"
+    files="Descriptions.java|InstructionReportErrorCode.java|ExecutionReportErrorCode.java|JSONRPCException.java|APINGException.java|AuthErrorCode.java"/>
+  <suppress
+    checks="AbbreviationAsWordInName"
+    files="StartingPrices.java|JSONRPCException.java|APINGException.java"/>
+  <suppress
+    checks="MemberName"
+    files="TokenRequest.java"/>
+</suppressions>

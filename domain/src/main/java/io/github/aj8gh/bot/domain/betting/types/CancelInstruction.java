@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CancelInstruction {
-    private String betId;
-    private Double sizeReduction;
+
+  private String betId;
+  private Double sizeReduction;
 }

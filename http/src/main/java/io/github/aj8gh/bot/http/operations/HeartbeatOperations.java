@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum HeartbeatOperations {
-    HEARTBEAT("heartbeat");
+  HEARTBEAT("heartbeat");
 
-    private final String value;
+  private final String value;
 }

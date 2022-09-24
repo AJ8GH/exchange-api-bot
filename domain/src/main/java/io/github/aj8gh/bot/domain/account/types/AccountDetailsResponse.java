@@ -10,13 +10,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AccountDetailsResponse {
-    private String currencyCode;
-    private String firstName;
-    private String lastName;
-    private String localeCode;
-    private String region;
-    private String timezone;
-    private Double discountRate;
-    private Integer pointsBalance;
-    private String countryCode;
+
+  private String currencyCode;
+  private String firstName;
+  private String lastName;
+  private String localeCode;
+  private String region;
+  private String timezone;
+  private Double discountRate;
+  private Integer pointsBalance;
+  private String countryCode;
 }

@@ -11,8 +11,10 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MarketLicence {
-    @NonNull private String wallet;
-    private String rules;
-    private Boolean rulesHasDate;
-    private String clarifications;
+
+  @NonNull
+  private String wallet;
+  private String rules;
+  private Boolean rulesHasDate;
+  private String clarifications;
 }

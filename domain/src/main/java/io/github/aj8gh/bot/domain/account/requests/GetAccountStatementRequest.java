@@ -9,10 +9,11 @@ import lombok.Value;
 @Value
 @Builder
 public class GetAccountStatementRequest {
-    String locale;
-    Integer fromRecord;
-    Integer recordCount;
-    TimeRange itemDateRange;
-    IncludeItem includeItem;
-    Wallet wallet;
+
+  String locale;
+  Integer fromRecord;
+  Integer recordCount;
+  TimeRange itemDateRange;
+  IncludeItem includeItem;
+  Wallet wallet;
 }

@@ -12,6 +12,9 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 public class HeartbeatReport {
-    @NonNull private ActionPerformed actionPerformed;
-    @NonNull private Integer actualTimeoutSeconds;
+
+  @NonNull
+  private ActionPerformed actionPerformed;
+  @NonNull
+  private Integer actualTimeoutSeconds;
 }

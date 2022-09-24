@@ -13,12 +13,16 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PlaceInstruction {
-    @NonNull private OrderType orderType;
-    @NonNull private Long selectionId;
-    @NonNull private Side side;
-    private Double handicap;
-    private LimitOrder limitOrder;
-    private LimitOnCloseOrder limitOnCloseOrder;
-    private MarketOnCloseOrder marketOnCloseOrder;
-    private String customerOrderRef;
+
+  @NonNull
+  private OrderType orderType;
+  @NonNull
+  private Long selectionId;
+  @NonNull
+  private Side side;
+  private Double handicap;
+  private LimitOrder limitOrder;
+  private LimitOnCloseOrder limitOnCloseOrder;
+  private MarketOnCloseOrder marketOnCloseOrder;
+  private String customerOrderRef;
 }

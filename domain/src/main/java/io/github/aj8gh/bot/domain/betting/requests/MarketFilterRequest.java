@@ -8,6 +8,7 @@ import lombok.Value;
 @Value
 @Builder
 public class MarketFilterRequest {
-    @NonNull MarketFilter filter;
-    String locale;
+
+  @NonNull MarketFilter filter;
+  String locale;
 }

@@ -10,7 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CompetitionResult {
-    private Competition competition;
-    private Integer marketCount;
-    private String competitionRegion;
+
+  private Competition competition;
+  private Integer marketCount;
+  private String competitionRegion;
 }

@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class EventTypeResult {
-    private EventType eventType;
-    private Integer marketCount;
+
+  private EventType eventType;
+  private Integer marketCount;
 }

@@ -7,5 +7,6 @@ import lombok.Value;
 @Value
 @Builder
 public class GetVendorDetailsRequest {
-    @NonNull String vendorId;
+
+  @NonNull String vendorId;
 }

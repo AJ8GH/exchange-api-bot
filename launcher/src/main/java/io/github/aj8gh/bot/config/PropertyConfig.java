@@ -7,12 +7,13 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 @PropertySource(value = "classpath:conf/defaults.properties", ignoreResourceNotFound = true)
 @PropertySource(value = "classpath:conf/overrides.properties", ignoreResourceNotFound = true)
-@PropertySource(value = "classpath:conf/${spring.profiles.active}.properties", ignoreResourceNotFound = true)
+@PropertySource(
+    value = "classpath:conf/${spring.profiles.active}.properties", ignoreResourceNotFound = true)
 @Configuration
 class PropertyConfig {
 
-    @Bean
-    static PropertySourcesPlaceholderConfigurer propertyConfigurer() {
-        return new PropertySourcesPlaceholderConfigurer();
-    }
+  @Bean
+  static PropertySourcesPlaceholderConfigurer propertyConfigurer() {
+    return new PropertySourcesPlaceholderConfigurer();
+  }
 }

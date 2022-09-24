@@ -11,14 +11,23 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DeveloperAppVersion {
-    @NonNull private String owner;
-    @NonNull private Long versionId;
-    @NonNull private String version;
-    @NonNull private String applicationKey;
-    @NonNull private Boolean delayData;
-    @NonNull private Boolean subscriptionRequired;
-    @NonNull private Boolean ownerManaged;
-    @NonNull private Boolean active;
-    private String vendorId;
-    private String vendorSecret;
+
+  @NonNull
+  private String owner;
+  @NonNull
+  private Long versionId;
+  @NonNull
+  private String version;
+  @NonNull
+  private String applicationKey;
+  @NonNull
+  private Boolean delayData;
+  @NonNull
+  private Boolean subscriptionRequired;
+  @NonNull
+  private Boolean ownerManaged;
+  @NonNull
+  private Boolean active;
+  private String vendorId;
+  private String vendorSecret;
 }
