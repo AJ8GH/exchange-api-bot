@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<interface name="SportsAPING" owner="BDP" version="1.0.0" date="now()" namespace="com.betfair.sports.api"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<interface name="SportsAPING" owner="BDP" version="1.0.0" date="now()"
+           namespace="com.betfair.sports.api"
+>
   <description>APING</description>
   <operation name="listEventTypes" since="1.0.0">
     <description>Returns a list of Event Types (i.e. Sports) associated with the markets selected by the

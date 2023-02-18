@@ -108,9 +108,7 @@ public class BettingClient {
         MarketProfitAndLoss[].class);
   }
 
-  private <T> List<T> requestCollection(String path,
-      HttpEntity<?> request,
-      Class<T[]> type) {
+  private <T> List<T> requestCollection(String path, HttpEntity<?> request, Class<T[]> type) {
     return httpClient.post(path, request, type)
         .map(Arrays::asList)
         .orElse(emptyList());

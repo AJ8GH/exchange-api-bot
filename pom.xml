@@ -23,11 +23,6 @@
 
   <repositories>
     <repository>
-      <id>aj-artifacts</id>
-      <name>AJ Artifacts Repository</name>
-      <url>https://raw.github.com/aj-artifacts/jmx/</url>
-    </repository>
-    <repository>
       <id>central</id>
       <name>Maven Repository Switchboard</name>
       <url>https://repo1.maven.org/maven2/</url>
@@ -44,10 +39,8 @@
 
   <properties>
     <!-- Project -->
-    <checkstyle.config.location>google_checks.xml</checkstyle.config.location>
-    <checkstyle.severity>warning</checkstyle.severity>
-    <checkstyle.fail>true</checkstyle.fail>
-    <checkstyle.console>true</checkstyle.console>
+    <checkstyle.config.location>checkstyle.xml</checkstyle.config.location>
+    <checkstyle.suppressions.location>suppressions.xml</checkstyle.suppressions.location>
     <default.package>${project.groupId}.${project.parent.artifactId}</default.package>
     <jacoco.haltOnFailure>true</jacoco.haltOnFailure>
     <jacoco.phase>test</jacoco.phase>
@@ -62,6 +55,7 @@
 
     <!-- Versions -->
     <awaitility.version>3.1.6</awaitility.version>
+    <checkstyle.version>0.0.3</checkstyle.version>
     <jackson.version>2.13.1</jackson.version>
     <jacoco.version>0.8.7</jacoco.version>
     <jakarta-validation.version>2.0.2</jakarta-validation.version>
@@ -220,12 +214,13 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-checkstyle-plugin</artifactId>
           <version>${maven-checkstyle.version}</version>
-          <configuration>
-            <configLocation>${checkstyle.config.location}</configLocation>
-            <violationSeverity>${checkstyle.severity}</violationSeverity>
-            <failOnViolation>${checkstyle.fail}</failOnViolation>
-            <consoleOutput>${checkstyle.console}</consoleOutput>
-          </configuration>
+          <dependencies>
+            <dependency>
+              <groupId>io.github.aj8gh</groupId>
+              <artifactId>checkstyle</artifactId>
+              <version>${checkstyle.version}</version>
+            </dependency>
+          </dependencies>
           <executions>
             <execution>
               <id>validate</id>
@@ -236,9 +231,15 @@
             </execution>
           </executions>
         </plugin>
-
       </plugins>
     </pluginManagement>
+
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+      </plugin>
+    </plugins>
   </build>
 
   <dependencyManagement>

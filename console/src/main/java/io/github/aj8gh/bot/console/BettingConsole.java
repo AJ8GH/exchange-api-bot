@@ -33,9 +33,9 @@ public class BettingConsole {
   private final ShellPrinter shell;
 
   public BettingConsole(BettingClient bettingClient,
-      RequestBuilder requestBuilder,
-      MarketCache marketCache,
-      ShellPrinter shell) {
+                        RequestBuilder requestBuilder,
+                        MarketCache marketCache,
+                        ShellPrinter shell) {
     this.bettingClient = bettingClient;
     this.requestBuilder = requestBuilder;
     this.marketCache = marketCache;
@@ -88,14 +88,20 @@ public class BettingConsole {
 
   @ShellMethod(key = {"list-market-catalogue", "lmc"}, value = Descriptions.LIST_MARKET_CATALOGUE)
   public void listMarketCatalogue(
-      @ShellOption(defaultValue = NULL, value = {"-mp", "--market-projection"},
-          help = MARKET_PROJECTION) final Set<MarketProjection> marketProjection,
-      @ShellOption(defaultValue = NULL, value = {"-s", "--sort"},
-          help = MARKET_SORT) final MarketSort sort,
-      @ShellOption(defaultValue = NULL, value = {"-mr", "--max-results"},
-          help = MAX_RESULTS) final Integer maxResults) {
+      @ShellOption(
+          defaultValue = NULL, value = {"-mp", "--market-projection"}, help = MARKET_PROJECTION)
+      final Set<MarketProjection> marketProjection,
+
+      @ShellOption(
+          defaultValue = NULL, value = {"-s", "--sort"}, help = MARKET_SORT) final MarketSort sort,
+
+      @ShellOption(
+          defaultValue = NULL, value = {"-mr", "--max-results"}, help = MAX_RESULTS)
+      final Integer maxResults) {
+
     var request = requestBuilder.getMarketCatalogueRequest(marketProjection, sort, maxResults);
     var response = bettingClient.listMarketCatalogue(request);
+
     marketCache.cacheMarketCatalogue(response);
     printResult(response);
   }
@@ -103,6 +109,7 @@ public class BettingConsole {
   @ShellMethod(key = {"list-runner-catalog", "lrc"}, value = Descriptions.LIST_RUNNER_CATALOG)
   public void listRunnerCatalog(
       @ShellOption(value = {"-m", "--market-id"}, help = MARKET_ID) final String marketId) {
+
     var marketCatalogue = marketCache.getMarketCatalogue(marketId);
     printResult(marketCatalogue.getRunners());
   }
@@ -110,6 +117,7 @@ public class BettingConsole {
   @ShellMethod(key = {"list-runners", "lr"}, value = Descriptions.LIST_RUNNER_CATALOG)
   public void listRunners(
       @ShellOption(value = {"-m", "--market-id"}, help = MARKET_ID) final String marketId) {
+
     var marketBook = marketCache.getMarketBook(marketId);
     printResult(marketBook.getRunners());
   }
@@ -117,6 +125,7 @@ public class BettingConsole {
   @ShellMethod(key = {"list-market-book", "lmb"}, value = Descriptions.LIST_MARKET_BOOK)
   public void listMarketBook(
       @ShellOption(value = {"-m", "--market-ids"}, help = MARKET_ID) final List<String> marketIds) {
+
     var request = requestBuilder.getMarketBookRequest(marketIds);
     var response = bettingClient.listMarketBook(request);
     marketCache.cacheMarketBook(response);

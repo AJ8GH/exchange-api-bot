@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<interface name="AccountAPING" owner="BDP" version="1.0.0" date="now()" namespace="com.betfair.account.api"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<interface name="AccountAPING" owner="BDP" version="1.0.0" date="now()"
+           namespace="com.betfair.account.api"
+>
   <description>Account API-NG</description>
 
   <!-- akm operations-->

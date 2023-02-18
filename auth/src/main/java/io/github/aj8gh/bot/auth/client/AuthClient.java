@@ -40,8 +40,7 @@ public class AuthClient {
     return sendRequest(KEEP_ALIVE.path(), buildRequest(token));
   }
 
-  private Optional<AuthResponse> sendRequest(String path,
-      HttpEntity<Void> request) {
+  private Optional<AuthResponse> sendRequest(String path, HttpEntity<Void> request) {
     return httpClient.post(path, request, AuthResponse.class)
         .map(response -> {
           if (response.getError() == null) {
